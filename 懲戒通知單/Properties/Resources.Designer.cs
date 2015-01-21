@@ -89,5 +89,15 @@ namespace K12.懲戒通知單.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   查詢類型 System.Byte[] 的當地語系化資源。
+        /// </summary>
+        internal static byte[] 懲戒通知單_附件一 {
+            get {
+                object obj = ResourceManager.GetObject("懲戒通知單_附件一", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

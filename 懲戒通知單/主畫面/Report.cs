@@ -346,22 +346,25 @@ namespace K12.懲戒通知單
                         detailString.Append(occurMonthDay + " "); //日期
 
                         if (!string.IsNullOrEmpty(reason))
+                        {
                             detailString.Append(reason + " "); //事由
+                            ds._value += reason + "_";
+                        }
 
                         if (var.DemeritA != 0)
                         {
                             StudentSuperOBJ[var.RefStudentID].DemeritA += var.DemeritA.Value;
-                            ds._value += "大過：" + var.DemeritA.Value.ToString() + " ";
+                            ds._value += "大過：" + var.DemeritA.Value.ToString() + "_";
                         }
                         if (var.DemeritB != 0)
                         {
                             StudentSuperOBJ[var.RefStudentID].DemeritB += var.DemeritB.Value;
-                            ds._value += "小過：" + var.DemeritB.Value.ToString() + " ";
+                            ds._value += "小過：" + var.DemeritB.Value.ToString() + "_";
                         }
                         if (var.DemeritC != 0)
                         {
                             StudentSuperOBJ[var.RefStudentID].DemeritC += var.DemeritC.Value;
-                            ds._value += "警告：" + var.DemeritC.Value.ToString() + " ";
+                            ds._value += "警告：" + var.DemeritC.Value.ToString();
                         }
 
                         //明細資料
@@ -557,17 +560,46 @@ namespace K12.懲戒通知單
                 mapping.Add("本期累計小過", eachStudentInfo.DemeritB);
                 mapping.Add("本期累計警告", eachStudentInfo.DemeritC);
 
+                #region 附件
+
+                MemoryStream accessoryMemory;
+                Aspose.Words.Document accessoryDoc;
+
                 //懲戒明細
-                object[] objectValues = new object[] { StudentSuperOBJ[student].DemeritStringList };
+                bool IsAccessory = false;
+                //合併列印的資料
+                Dictionary<string, object> mappingAccessory = new Dictionary<string, object>();
+                mappingAccessory.Add("學年度", School.DefaultSchoolYear);
+                mappingAccessory.Add("學期", School.DefaultSemester);
+                //學生資料
+                mappingAccessory.Add("學生姓名", eachStudentInfo.student.Name);
+                mappingAccessory.Add("班級", eachStudentInfo.ClassName);
+                mappingAccessory.Add("座號", eachStudentInfo.SeatNo);
+                mappingAccessory.Add("學號", eachStudentInfo.StudentNumber);
+                mappingAccessory.Add("導師", eachStudentInfo.TeacherName);
+                mappingAccessory.Add("資料期間", obj.StartDate.ToShortDateString() + " 至 " + obj.EndDate.ToShortDateString());
+
+                #endregion
+
                 int demerit1 = 1;
+                object[] objectValues = new object[] { StudentSuperOBJ[student].DemeritStringList };
                 foreach (DemStr demerit in StudentSuperOBJ[student].DemeritStringList)
                 {
-                    mapping.Add("日期" + demerit1, demerit._date);
-                    mapping.Add("內容" + demerit1, demerit._value);
-                    demerit1++;
-                }
+                    if (demerit1 <= 10) //資料數大於10,透過附件列印
+                    {
 
-                //mapping.Add("懲戒明細", objectValues);
+                        mapping.Add("日期" + demerit1, demerit._date);
+                        mapping.Add("內容" + demerit1, demerit._value);
+                        demerit1++;
+                    }
+                    else
+                    {
+                        IsAccessory = true;
+                        mappingAccessory.Add("日期" + demerit1, demerit._date);
+                        mappingAccessory.Add("內容" + demerit1, demerit._value);
+                        demerit1++;
+                    }
+                }
 
                 string[] keys = new string[mapping.Count];
                 object[] values = new object[mapping.Count];
@@ -582,8 +614,40 @@ namespace K12.懲戒通知單
                 //eachDoc.MailMerge.FieldMergingCallback = new HandleMergeImageFieldFromBlob();
                 eachDoc.MailMerge.Execute(keys, values);
                 eachDoc.MailMerge.DeleteFields(); //刪除未合併之內容
-                Aspose.Words.Node eachSectionNode = eachDoc.Sections[0].Clone();
-                doc.Sections.Add(doc.ImportNode(eachSectionNode, true));
+
+
+                if (IsAccessory)
+                {
+                    #region 附件
+                    accessoryMemory = new MemoryStream(Properties.Resources.懲戒通知單_附件一);
+                    accessoryDoc = new Aspose.Words.Document(accessoryMemory);
+
+                    string[] keysAccessory = new string[mappingAccessory.Count];
+                    object[] valuesAccessory = new object[mappingAccessory.Count];
+                    int xx = 0;
+                    foreach (string key in mappingAccessory.Keys)
+                    {
+                        keysAccessory[xx] = key;
+                        valuesAccessory[xx++] = mappingAccessory[key];
+                    }
+
+                    accessoryDoc.MailMerge.CleanupOptions = Aspose.Words.Reporting.MailMergeCleanupOptions.RemoveEmptyParagraphs;
+                    accessoryDoc.MailMerge.Execute(keysAccessory, valuesAccessory);
+                    accessoryDoc.MailMerge.DeleteFields(); //刪除未合併之內容 
+
+                    Aspose.Words.Node eachSectionaccessory = accessoryDoc.Sections[0].Clone();
+                    eachDoc.Sections.Add(eachDoc.ImportNode(eachSectionaccessory, true));
+                    #endregion
+                }
+
+
+
+                //加入文件
+                foreach (Aspose.Words.Section each in eachDoc.Sections)
+                {
+                    Aspose.Words.Node eachSectionNode = each.Clone();
+                    doc.Sections.Add(doc.ImportNode(eachSectionNode, true));
+                }
 
                 //回報進度
                 _BGWDisciplineNotification.ReportProgress((int)(((double)currentStudentCount++ * 100.0) / (double)totalStudentNumber));

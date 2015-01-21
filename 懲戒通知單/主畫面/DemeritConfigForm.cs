@@ -148,6 +148,7 @@ namespace K12.懲戒通知單
             {
                 try
                 {
+
                     FileStream fs = new FileStream(sfd.FileName, FileMode.Create);
                     fs.Write(Properties.Resources.懲戒通知單_住址中間版, 0, Properties.Resources.懲戒通知單_住址中間版.Length);
                     fs.Close();
