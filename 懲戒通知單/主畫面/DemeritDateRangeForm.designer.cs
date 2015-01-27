@@ -1,5 +1,5 @@
 ﻿
-namespace K12.懲戒通知單
+namespace K12.懲戒通知單2013
 {
     partial class DemeritDateRangeForm
     {
@@ -37,6 +37,7 @@ namespace K12.懲戒通知單
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput2)).BeginInit();
@@ -126,7 +127,6 @@ namespace K12.懲戒通知單
             this.dateTimeInput2.MonthCalendar.TodayButtonVisible = true;
             this.dateTimeInput2.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
             this.dateTimeInput2.Size = new System.Drawing.Size(135, 25);
-            this.dateTimeInput2.TextChanged += new System.EventHandler(this.dateTimeInput2_TextChanged);
             // 
             // dateTimeInput1
             // 
@@ -202,7 +202,6 @@ namespace K12.懲戒通知單
             // timer1
             // 
             this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // buttonX2
             // 
@@ -274,11 +273,24 @@ namespace K12.懲戒通知單
             this.labelX3.TabIndex = 12;
             this.labelX3.Text = "說明:本報表將列印docx與xlsx檔案\r\n您需要OFFICE 2007以上版本Word開啟檔案";
             // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabel2.Location = new System.Drawing.Point(90, 222);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(86, 17);
+            this.linkLabel2.TabIndex = 13;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "功能變數總表";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
             // DemeritDateRangeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(380, 246);
+            this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.labelX3);
             this.Controls.Add(this.checkBoxX1);
             this.Controls.Add(this.radioButton1);
@@ -302,6 +314,7 @@ namespace K12.懲戒通知單
             this.Controls.SetChildIndex(this.radioButton1, 0);
             this.Controls.SetChildIndex(this.checkBoxX1, 0);
             this.Controls.SetChildIndex(this.labelX3, 0);
+            this.Controls.SetChildIndex(this.linkLabel2, 0);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput2)).EndInit();
@@ -320,5 +333,6 @@ namespace K12.懲戒通知單
         public System.Windows.Forms.RadioButton radioButton2;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX1;
         private DevComponents.DotNetBar.LabelX labelX3;
+        private System.Windows.Forms.LinkLabel linkLabel2;
     }
 }

@@ -12,7 +12,7 @@ using K12.Data;
 using Framework.Feature;
 using Aspose.Words.Reporting;
 
-namespace K12.懲戒通知單
+namespace K12.懲戒通知單2013
 {
     internal class Report : IReport
     {
@@ -182,18 +182,6 @@ namespace K12.懲戒通知單
 
             string reportName = "懲戒通知單";
 
-            //object[] args = e.Argument as object[];
-
-            //DateTime startDate = obj.StartDate;
-            //DateTime endDate = obj.EndDate;
-            //bool printHasRecordOnly = obj.PrintHasRecordOnly; //如果沒資料就直接離開(會一直都true)
-            //MemoryStream templateStream = obj.Template;
-            //string receiveName = obj.ReceiveName;
-            //string receiveAddress = obj.ReceiveAddress;
-            //string condName = obj.ConditionName;
-            //int condNumber = int.Parse(obj.ConditionNumber);
-            //bool IsInsertDate = obj.IsInsertDate;
-
             //取得換算單位
             ChengeDemerit(obj.ConditionName, int.Parse(obj.ConditionNumber));
 
@@ -289,6 +277,9 @@ namespace K12.懲戒通知單
             {
                 DemeritList = Demerit.SelectByRegisterDate(allStudentID, obj.StartDate, obj.EndDate);
             }
+
+            if (DemeritList.Count == 0)
+                e.Cancel = true; //沒有懲戒資料
 
             //依日期排序
             DemeritList.Sort(SortDateTime);

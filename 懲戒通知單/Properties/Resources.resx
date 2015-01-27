@@ -127,6 +127,9 @@
   <data name="懲戒通知單_住址中間版" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\懲戒通知單_住址中間版.docx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="懲戒通知單_功能變數總表" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\懲戒通知單_功能變數總表.docx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="懲戒通知單_附件一" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\懲戒通知單_附件一.docx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

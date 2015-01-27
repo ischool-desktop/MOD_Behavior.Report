@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using System.Xml;
 using K12.Data.Configuration;
 
-namespace K12.懲戒通知單
+namespace K12.懲戒通知單2013
 {
     public partial class DemeritDateRangeForm : SelectDateRangeForm
     {
@@ -202,7 +202,6 @@ namespace K12.懲戒通知單
 
             #endregion
 
-            //_preferenceLoaded = true;
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -278,13 +277,6 @@ namespace K12.懲戒通知單
             return DateTime.Parse(inputDate.Year + "/" + inputDate.Month + "/1");
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            //if (_printable)
-            //    dateTimeInput1.Text = _startDate.ToShortDateString();
-            //timer1.Stop();
-        }
-
         private void buttonX2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -320,26 +312,31 @@ namespace K12.懲戒通知單
                         throw new Exception("Date Range Mode Error");
                 }
 
-                //if (dateTimeInput1.Text != _startDate.ToShortDateString() && timer1 != null)
-                //    timer1.Start();
                 errorProvider1.Clear();
             }
         }
 
-        private void dateTimeInput2_TextChanged(object sender, EventArgs e)
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //if (_preferenceLoaded)
-            //{
-            //    if (_mode == DateRangeModeNew.Custom)
-            //    {
-            //        base.dateTimeInput2_TextChanged(sender, e);
-            //    }
-            //    else
-            //    {
-            //        _endTextBoxOK = true;
-            //        errorProvider2.Clear();
-            //    }
-            //}
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Title = "另存新檔";
+            sfd.FileName = "懲戒通知單_功能變數總表.docx";
+            sfd.Filter = "Word檔案 (*.docx)|*.docx|所有檔案 (*.*)|*.*";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    FileStream fs = new FileStream(sfd.FileName, FileMode.Create);
+                    fs.Write(Properties.Resources.懲戒通知單_功能變數總表, 0, Properties.Resources.懲戒通知單_功能變數總表.Length);
+                    fs.Close();
+                    System.Diagnostics.Process.Start(sfd.FileName);
+                }
+                catch
+                {
+                    FISCA.Presentation.Controls.MsgBox.Show("指定路徑無法存取。", "另存檔案失敗", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
         }
     }
 

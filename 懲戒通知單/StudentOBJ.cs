@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using K12.Data;
 
-namespace K12.懲戒通知單
+namespace K12.懲戒通知單2013
 {
     class StudentOBJ
     {

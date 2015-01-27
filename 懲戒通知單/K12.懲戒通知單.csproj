@@ -8,7 +8,7 @@
     <ProjectGuid>{32E229E1-2A0B-4DFD-B18A-85E6A1A70327}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>K12.懲戒通知單</RootNamespace>
+    <RootNamespace>K12.懲戒通知單2013</RootNamespace>
     <AssemblyName>K12.DemeritAnAdviceNote.2013</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -182,6 +182,7 @@
     <None Include="Resources\boolean_field_fav_64.png" />
     <None Include="Resources\懲戒通知單_住址上方版.docx" />
     <None Include="Resources\懲戒通知單_住址中間版.docx" />
+    <None Include="Resources\懲戒通知單_功能變數總表.docx" />
     <None Include="Resources\懲戒通知單_附件一.docx" />
   </ItemGroup>
   <ItemGroup>

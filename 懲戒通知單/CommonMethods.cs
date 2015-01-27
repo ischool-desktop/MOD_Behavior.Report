@@ -6,7 +6,7 @@ using K12.Data;
 using Aspose.Cells;
 using FISCA.Presentation.Controls;
 
-namespace K12.懲戒通知單
+namespace K12.懲戒通知單2013
 {
     internal static class CommonMethods
     {
@@ -15,53 +15,71 @@ namespace K12.懲戒通知單
         /// </summary>
         public static void ExcelReport_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            string reportName;
-            string path;
-            Workbook wb;
-
-            object[] result = (object[])e.Result;
-            reportName = (string)result[0];
-            path = (string)result[1];
-            wb = (Workbook)result[2];
-
-            if (File.Exists(path))
+            if (!e.Cancelled)
             {
-                int i = 1;
-                while (true)
+                if (e.Error == null)
                 {
-                    string newPath = Path.GetDirectoryName(path) + "\\" + Path.GetFileNameWithoutExtension(path) + (i++) + Path.GetExtension(path);
-                    if (!File.Exists(newPath))
+                    #region 列印
+
+                    string reportName;
+                    string path;
+                    Workbook wb;
+
+                    object[] result = (object[])e.Result;
+                    reportName = (string)result[0];
+                    path = (string)result[1];
+                    wb = (Workbook)result[2];
+
+                    if (File.Exists(path))
                     {
-                        path = newPath;
-                        break;
+                        int i = 1;
+                        while (true)
+                        {
+                            string newPath = Path.GetDirectoryName(path) + "\\" + Path.GetFileNameWithoutExtension(path) + (i++) + Path.GetExtension(path);
+                            if (!File.Exists(newPath))
+                            {
+                                path = newPath;
+                                break;
+                            }
+                        }
                     }
-                }
-            }
 
-            try
-            {
-                wb.Save(path, SaveFormat.Xlsx);
-                FISCA.Presentation.MotherForm.SetStatusBarMessage(reportName + "產生完成");
-                System.Diagnostics.Process.Start(path);
-            }
-            catch
-            {
-                SaveFileDialog sd = new SaveFileDialog();
-                sd.Title = "另存新檔";
-                sd.FileName = reportName + ".xlsx";
-                sd.Filter = "Excel檔案 (*.xlsx)|*.xlsx|所有檔案 (*.*)|*.*";
-                if (sd.ShowDialog() == DialogResult.OK)
-                {
                     try
                     {
-                        wb.Save(sd.FileName, SaveFormat.Xlsx);
+                        wb.Save(path, SaveFormat.Xlsx);
+                        FISCA.Presentation.MotherForm.SetStatusBarMessage(reportName + "產生完成");
+                        System.Diagnostics.Process.Start(path);
                     }
                     catch
                     {
-                        MsgBox.Show("指定路徑無法存取。", "建立檔案失敗", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                        SaveFileDialog sd = new SaveFileDialog();
+                        sd.Title = "另存新檔";
+                        sd.FileName = reportName + ".xlsx";
+                        sd.Filter = "Excel檔案 (*.xlsx)|*.xlsx|所有檔案 (*.*)|*.*";
+                        if (sd.ShowDialog() == DialogResult.OK)
+                        {
+                            try
+                            {
+                                wb.Save(sd.FileName, SaveFormat.Xlsx);
+                            }
+                            catch
+                            {
+                                MsgBox.Show("指定路徑無法存取。", "建立檔案失敗", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+                    } 
+
+                    #endregion
                 }
+                else
+                {
+                    MsgBox.Show("發生錯誤:\n" + e.Error.Message);
+                }
+            }
+            else
+            {
+                MsgBox.Show("已取消!!");
             }
         }
 
@@ -70,79 +88,97 @@ namespace K12.懲戒通知單
         /// </summary>
         public static void WordReport_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            object[] result = (object[])e.Result;
-
-            string reportName = (string)result[0];
-            string path = (string)result[1];
-            Aspose.Words.Document doc = (Aspose.Words.Document)result[2];
-            string path2 = (string)result[3];
-            bool PrintStudetnList = (bool)result[4];
-            Aspose.Cells.Workbook wb = (Aspose.Cells.Workbook)result[5];
-
-            if (File.Exists(path))
+            if (!e.Cancelled)
             {
-                int i = 1;
-                while (true)
+                if (e.Error == null)
                 {
-                    string newPath = Path.GetDirectoryName(path) + "\\" + Path.GetFileNameWithoutExtension(path) + (i++) + Path.GetExtension(path);
-                    if (!File.Exists(newPath))
+                    #region 列印
+
+                    object[] result = (object[])e.Result;
+
+                    string reportName = (string)result[0];
+                    string path = (string)result[1];
+                    Aspose.Words.Document doc = (Aspose.Words.Document)result[2];
+                    string path2 = (string)result[3];
+                    bool PrintStudetnList = (bool)result[4];
+                    Aspose.Cells.Workbook wb = (Aspose.Cells.Workbook)result[5];
+
+                    if (File.Exists(path))
                     {
-                        path = newPath;
-                        break;
+                        int i = 1;
+                        while (true)
+                        {
+                            string newPath = Path.GetDirectoryName(path) + "\\" + Path.GetFileNameWithoutExtension(path) + (i++) + Path.GetExtension(path);
+                            if (!File.Exists(newPath))
+                            {
+                                path = newPath;
+                                break;
+                            }
+                        }
                     }
-                }
-            }
 
-            if (File.Exists(path2))
-            {
-                int i = 1;
-                while (true)
-                {
-                    string newPath = Path.GetDirectoryName(path2) + "\\" + Path.GetFileNameWithoutExtension(path2) + (i++) + Path.GetExtension(path2);
-                    if (!File.Exists(newPath))
+                    if (File.Exists(path2))
                     {
-                        path2 = newPath;
-                        break;
+                        int i = 1;
+                        while (true)
+                        {
+                            string newPath = Path.GetDirectoryName(path2) + "\\" + Path.GetFileNameWithoutExtension(path2) + (i++) + Path.GetExtension(path2);
+                            if (!File.Exists(newPath))
+                            {
+                                path2 = newPath;
+                                break;
+                            }
+                        }
                     }
-                }
-            }
 
-            try
-            {
-                if (PrintStudetnList) //是否列印學生
-                {
-                    doc.Save(path, Aspose.Words.SaveFormat.Docx);
-                    wb.Save(path2);
-                    FISCA.Presentation.MotherForm.SetStatusBarMessage(reportName + "產生完成");
-                    System.Diagnostics.Process.Start(path);
-                    System.Diagnostics.Process.Start(path2);
-                }
-                else
-                {
-                    doc.Save(path, Aspose.Words.SaveFormat.Docx);
-                    FISCA.Presentation.MotherForm.SetStatusBarMessage(reportName + "產生完成");
-                    System.Diagnostics.Process.Start(path);
-                }
-            }
-            catch
-            {
-                SaveFileDialog sd = new SaveFileDialog();
-                sd.Title = "另存新檔";
-                sd.FileName = reportName + ".docx";
-                sd.Filter = "Word檔案 (*.docx)|*.docx|所有檔案 (*.*)|*.*";
-                if (sd.ShowDialog() == DialogResult.OK)
-                {
                     try
                     {
-                        doc.Save(sd.FileName, Aspose.Words.SaveFormat.Docx);
-
+                        if (PrintStudetnList) //是否列印學生
+                        {
+                            doc.Save(path, Aspose.Words.SaveFormat.Docx);
+                            wb.Save(path2);
+                            FISCA.Presentation.MotherForm.SetStatusBarMessage(reportName + "產生完成");
+                            System.Diagnostics.Process.Start(path);
+                            System.Diagnostics.Process.Start(path2);
+                        }
+                        else
+                        {
+                            doc.Save(path, Aspose.Words.SaveFormat.Docx);
+                            FISCA.Presentation.MotherForm.SetStatusBarMessage(reportName + "產生完成");
+                            System.Diagnostics.Process.Start(path);
+                        }
                     }
                     catch
                     {
-                        MsgBox.Show("指定路徑無法存取。", "建立檔案失敗", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                        SaveFileDialog sd = new SaveFileDialog();
+                        sd.Title = "另存新檔";
+                        sd.FileName = reportName + ".docx";
+                        sd.Filter = "Word檔案 (*.docx)|*.docx|所有檔案 (*.*)|*.*";
+                        if (sd.ShowDialog() == DialogResult.OK)
+                        {
+                            try
+                            {
+                                doc.Save(sd.FileName, Aspose.Words.SaveFormat.Docx);
+
+                            }
+                            catch
+                            {
+                                MsgBox.Show("指定路徑無法存取。", "建立檔案失敗", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+                    } 
+
+                    #endregion
                 }
+                else
+                {
+                    MsgBox.Show("發生錯誤:\n" + e.Error.Message);
+                }
+            }
+            else
+            {
+                MsgBox.Show("列印失敗,未取得懲戒資料!!");
             }
         }
 

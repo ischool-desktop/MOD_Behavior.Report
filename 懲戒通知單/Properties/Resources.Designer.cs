@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace K12.懲戒通知單.Properties {
+namespace K12.懲戒通知單2013.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace K12.懲戒通知單.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("K12.懲戒通知單.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("K12.懲戒通知單2013.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -86,6 +86,16 @@ namespace K12.懲戒通知單.Properties {
         internal static byte[] 懲戒通知單_住址中間版 {
             get {
                 object obj = ResourceManager.GetObject("懲戒通知單_住址中間版", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Byte[] 的當地語系化資源。
+        /// </summary>
+        internal static byte[] 懲戒通知單_功能變數總表 {
+            get {
+                object obj = ResourceManager.GetObject("懲戒通知單_功能變數總表", resourceCulture);
                 return ((byte[])(obj));
             }
         }
