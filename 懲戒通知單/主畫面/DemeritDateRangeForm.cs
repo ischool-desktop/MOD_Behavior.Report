@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using System.Xml;
 using K12.Data.Configuration;
 
-namespace K12.懲戒通知單2013
+namespace K12.懲戒通知單2015
 {
     public partial class DemeritDateRangeForm : SelectDateRangeForm
     {
@@ -18,6 +18,8 @@ namespace K12.懲戒通知單2013
         private string _receiveAddress = "";
         private string _conditionName = "";
         private string _conditionNumber = "1";
+
+        public bool _cbPaper = false;
 
         string ConfigName = "懲戒通知單_ForK12.2013";
 
@@ -337,6 +339,11 @@ namespace K12.懲戒通知單2013
                     return;
                 }
             }
+        }
+
+        private void cbUpdate_CheckedChanged(object sender, EventArgs e)
+        {
+            _cbPaper = cbUpdate.Checked;
         }
     }
 

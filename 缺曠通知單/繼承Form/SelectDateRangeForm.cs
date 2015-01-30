@@ -2,7 +2,7 @@ using System;
 using System.Windows.Forms;
 using FISCA.Presentation.Controls;
 
-namespace K12.缺曠通知單2013
+namespace K12.缺曠通知單2015
 {
     public partial class SelectDateRangeForm : BaseForm
     {

@@ -1,4 +1,4 @@
-﻿namespace K12.缺曠通知單2013
+﻿namespace K12.缺曠通知單2015
 {
     partial class AbsenceNotificationSelectDateRangeForm
     {
@@ -35,7 +35,7 @@
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.cbUpdate = new DevComponents.DotNetBar.Controls.CheckBoxX();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput2)).BeginInit();
@@ -250,30 +250,31 @@
             this.labelX3.TabIndex = 16;
             this.labelX3.Text = "說明:本報表將列印docx與xlsx檔案\r\n您需要OFFICE 2007以上版本Word開啟檔案";
             // 
-            // checkBoxX1
+            // cbUpdate
             // 
-            this.checkBoxX1.AutoSize = true;
-            this.checkBoxX1.BackColor = System.Drawing.Color.Transparent;
+            this.cbUpdate.AutoSize = true;
+            this.cbUpdate.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
-            this.checkBoxX1.BackgroundStyle.Class = "";
-            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX1.Location = new System.Drawing.Point(14, 116);
-            this.checkBoxX1.Name = "checkBoxX1";
-            this.checkBoxX1.Size = new System.Drawing.Size(147, 21);
-            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX1.TabIndex = 15;
-            this.checkBoxX1.Text = "列印並上傳電子報表";
-            this.checkBoxX1.TextColor = System.Drawing.Color.Red;
+            this.cbUpdate.BackgroundStyle.Class = "";
+            this.cbUpdate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbUpdate.Location = new System.Drawing.Point(14, 116);
+            this.cbUpdate.Name = "cbUpdate";
+            this.cbUpdate.Size = new System.Drawing.Size(147, 21);
+            this.cbUpdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbUpdate.TabIndex = 15;
+            this.cbUpdate.Text = "列印並上傳電子報表";
+            this.cbUpdate.TextColor = System.Drawing.Color.Red;
+            this.cbUpdate.CheckedChanged += new System.EventHandler(this.cbUpdate_CheckedChanged);
             // 
             // AbsenceNotificationSelectDateRangeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 248);
+            this.ClientSize = new System.Drawing.Size(434, 251);
             this.Controls.Add(this.labelX3);
-            this.Controls.Add(this.checkBoxX1);
+            this.Controls.Add(this.cbUpdate);
             this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.linkLabel2);
@@ -281,7 +282,7 @@
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(3);
             this.Name = "AbsenceNotificationSelectDateRangeForm";
-            this.Text = "缺曠通知單";
+            this.Text = "缺曠通知單(2015)";
             this.Controls.SetChildIndex(this.buttonX2, 0);
             this.Controls.SetChildIndex(this.dateTimeInput2, 0);
             this.Controls.SetChildIndex(this.buttonX1, 0);
@@ -291,7 +292,7 @@
             this.Controls.SetChildIndex(this.labelX2, 0);
             this.Controls.SetChildIndex(this.labelX1, 0);
             this.Controls.SetChildIndex(this.linkLabel3, 0);
-            this.Controls.SetChildIndex(this.checkBoxX1, 0);
+            this.Controls.SetChildIndex(this.cbUpdate, 0);
             this.Controls.SetChildIndex(this.labelX3, 0);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
@@ -310,6 +311,6 @@
         private DevComponents.DotNetBar.ButtonX buttonX2;
         private System.Windows.Forms.LinkLabel linkLabel3;
         private DevComponents.DotNetBar.LabelX labelX3;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX1;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbUpdate;
     }
 }

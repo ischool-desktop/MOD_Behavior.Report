@@ -1,5 +1,5 @@
 ﻿
-namespace K12.缺曠通知單2013
+namespace K12.缺曠通知單2015
 {
     partial class AbsenceNotificationConfigForm
     {
@@ -548,7 +548,7 @@ namespace K12.缺曠通知單2013
             // 
             this.checkBoxX2.BackgroundStyle.Class = "";
             this.checkBoxX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX2.Location = new System.Drawing.Point(10, 241);
+            this.checkBoxX2.Location = new System.Drawing.Point(10, 245);
             this.checkBoxX2.Name = "checkBoxX2";
             this.checkBoxX2.Size = new System.Drawing.Size(147, 21);
             this.checkBoxX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -560,7 +560,7 @@ namespace K12.缺曠通知單2013
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(429, 269);
+            this.ClientSize = new System.Drawing.Size(429, 277);
             this.Controls.Add(this.checkBoxX2);
             this.Controls.Add(this.groupPanel3);
             this.Controls.Add(this.groupPanel2);
@@ -568,6 +568,7 @@ namespace K12.缺曠通知單2013
             this.Controls.Add(this.buttonX2);
             this.Controls.Add(this.buttonX1);
             this.Controls.Add(this.checkBoxX1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AbsenceNotificationConfigForm";

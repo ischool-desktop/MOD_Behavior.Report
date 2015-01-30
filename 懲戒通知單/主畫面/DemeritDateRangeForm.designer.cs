@@ -1,5 +1,5 @@
 ﻿
-namespace K12.懲戒通知單2013
+namespace K12.懲戒通知單2015
 {
     partial class DemeritDateRangeForm
     {
@@ -35,7 +35,7 @@ namespace K12.懲戒通知單2013
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.cbUpdate = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -241,22 +241,23 @@ namespace K12.懲戒通知單2013
             this.radioButton2.Text = "依登錄日期列印";
             this.radioButton2.UseVisualStyleBackColor = false;
             // 
-            // checkBoxX1
+            // cbUpdate
             // 
-            this.checkBoxX1.AutoSize = true;
-            this.checkBoxX1.BackColor = System.Drawing.Color.Transparent;
+            this.cbUpdate.AutoSize = true;
+            this.cbUpdate.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
-            this.checkBoxX1.BackgroundStyle.Class = "";
-            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX1.Location = new System.Drawing.Point(12, 128);
-            this.checkBoxX1.Name = "checkBoxX1";
-            this.checkBoxX1.Size = new System.Drawing.Size(147, 21);
-            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX1.TabIndex = 11;
-            this.checkBoxX1.Text = "列印並上傳電子報表";
-            this.checkBoxX1.TextColor = System.Drawing.Color.Red;
+            this.cbUpdate.BackgroundStyle.Class = "";
+            this.cbUpdate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbUpdate.Location = new System.Drawing.Point(12, 128);
+            this.cbUpdate.Name = "cbUpdate";
+            this.cbUpdate.Size = new System.Drawing.Size(147, 21);
+            this.cbUpdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbUpdate.TabIndex = 11;
+            this.cbUpdate.Text = "列印並上傳電子報表";
+            this.cbUpdate.TextColor = System.Drawing.Color.Red;
+            this.cbUpdate.CheckedChanged += new System.EventHandler(this.cbUpdate_CheckedChanged);
             // 
             // labelX3
             // 
@@ -289,20 +290,18 @@ namespace K12.懲戒通知單2013
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 246);
+            this.ClientSize = new System.Drawing.Size(388, 251);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.labelX3);
-            this.Controls.Add(this.checkBoxX1);
+            this.Controls.Add(this.cbUpdate);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.buttonX2);
             this.Controls.Add(this.linkLabel1);
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.MaximumSize = new System.Drawing.Size(396, 285);
-            this.MinimumSize = new System.Drawing.Size(396, 285);
             this.Name = "DemeritDateRangeForm";
-            this.Text = "懲戒通知單(2013)";
+            this.Text = "懲戒通知單(2015)";
             this.Controls.SetChildIndex(this.dateTimeInput1, 0);
             this.Controls.SetChildIndex(this.dateTimeInput2, 0);
             this.Controls.SetChildIndex(this.labelX2, 0);
@@ -312,7 +311,7 @@ namespace K12.懲戒通知單2013
             this.Controls.SetChildIndex(this.labelX1, 0);
             this.Controls.SetChildIndex(this.radioButton2, 0);
             this.Controls.SetChildIndex(this.radioButton1, 0);
-            this.Controls.SetChildIndex(this.checkBoxX1, 0);
+            this.Controls.SetChildIndex(this.cbUpdate, 0);
             this.Controls.SetChildIndex(this.labelX3, 0);
             this.Controls.SetChildIndex(this.linkLabel2, 0);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -331,7 +330,7 @@ namespace K12.懲戒通知單2013
         private DevComponents.DotNetBar.ButtonX buttonX2;
         public System.Windows.Forms.RadioButton radioButton1;
         public System.Windows.Forms.RadioButton radioButton2;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX1;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbUpdate;
         private DevComponents.DotNetBar.LabelX labelX3;
         private System.Windows.Forms.LinkLabel linkLabel2;
     }

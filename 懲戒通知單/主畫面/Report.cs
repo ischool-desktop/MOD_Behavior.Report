@@ -11,8 +11,10 @@ using FISCA.Presentation.Controls;
 using K12.Data;
 using Framework.Feature;
 using Aspose.Words.Reporting;
+using Aspose.Words;
+using SmartSchool.ePaper;
 
-namespace K12.懲戒通知單2013
+namespace K12.懲戒通知單2015
 {
     internal class Report : IReport
     {
@@ -29,6 +31,11 @@ namespace K12.懲戒通知單2013
         string entityName;
 
         bool PrintUpdateStudentFile = false;
+
+        /// <summary>
+        /// 學生電子報表
+        /// </summary>
+        SmartSchool.ePaper.ElectronicPaper paperForStudent { get; set; }
 
         public Report(string _entityName)
         {
@@ -56,6 +63,7 @@ namespace K12.懲戒通知單2013
                 obj.ConditionNumber = form.ConditionNumber;
                 obj.IsInsertDate = form.radioButton1.Checked;
                 obj.PrintStudentList = form.PrintStudentList;
+                obj.PaperUpdate = form._cbPaper; //是否列印電子報表
                 #endregion
 
                 _BGWDisciplineNotification = new BackgroundWorker();
@@ -475,6 +483,7 @@ namespace K12.懲戒通知單2013
 
             Aspose.Words.Document doc = new Aspose.Words.Document();
             doc.RemoveAllChildren();
+            paperForStudent = new SmartSchool.ePaper.ElectronicPaper("懲戒通知單_" + DateTime.Now.Year + DateTime.Now.Month.ToString().PadLeft(2, '0') + DateTime.Now.Day.ToString().PadLeft(2, '0'), School.DefaultSchoolYear, School.DefaultSemester, SmartSchool.ePaper.ViewerType.Student);
 
             Aspose.Words.Node sectionNode = template.Sections[0].Clone();
 
@@ -628,7 +637,17 @@ namespace K12.懲戒通知單2013
 
                     Aspose.Words.Node eachSectionaccessory = accessoryDoc.Sections[0].Clone();
                     eachDoc.Sections.Add(eachDoc.ImportNode(eachSectionaccessory, true));
+
+                    MemoryStream stream = new MemoryStream();
+                    eachDoc.Save(stream, SaveFormat.Doc);
+                    paperForStudent.Append(new PaperItem(PaperFormat.Office2003Doc, stream, eachStudentInfo.student.ID));
                     #endregion
+                }
+                else
+                {
+                    MemoryStream stream = new MemoryStream();
+                    eachDoc.Save(stream, SaveFormat.Doc);
+                    paperForStudent.Append(new PaperItem(PaperFormat.Office2003Doc, stream, eachStudentInfo.student.ID));
                 }
 
 
@@ -696,6 +715,10 @@ namespace K12.懲戒通知單2013
             }
             #endregion
 
+            if (obj.PaperUpdate)
+            {
+                SmartSchool.ePaper.DispatcherProvider.Dispatch(paperForStudent);
+            }
 
             string path = Path.Combine(Application.StartupPath, "Reports");
             string path2 = Path.Combine(Application.StartupPath, "Reports");

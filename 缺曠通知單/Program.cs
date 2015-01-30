@@ -7,7 +7,7 @@ using FISCA.Permission;
 using FISCA.Presentation;
 using FISCA.Presentation.Controls;
 
-namespace K12.缺曠通知單2013
+namespace K12.缺曠通知單2015
 {
     public class Program
     {
@@ -17,13 +17,13 @@ namespace K12.缺曠通知單2013
             string URL學生缺曠通知單 = "ischool/高中系統/共用/學務/學生/報表/缺曠通知單_2013";
             string URL班級缺曠通知單 = "ischool/高中系統/共用/學務/班級/報表/缺曠通知單_2013";
 
-            string toolName = "缺曠通知單(2015)";
+            string toolName = "2015缺曠通知單(測試版)";
 
             FISCA.Features.Register(URL學生缺曠通知單, arg =>
             {
                 if (K12.Presentation.NLDPanels.Student.SelectedSource.Count > 0)
                 {
-                    new K12.缺曠通知單2013.Report("student").Print();
+                    new Report("student").Print();
                 }
                 else
                 {
@@ -35,7 +35,7 @@ namespace K12.缺曠通知單2013
             {
                 if (K12.Presentation.NLDPanels.Class.SelectedSource.Count > 0)
                 {
-                    new K12.缺曠通知單2013.Report("class").Print();
+                    new Report("class").Print();
                 }
                 else
                 {

@@ -1,5 +1,5 @@
 ﻿
-namespace K12.缺曠通知單2013
+namespace K12.缺曠通知單2015
 {
     partial class SelectTypeForm
     {

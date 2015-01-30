@@ -8,7 +8,7 @@ using DevComponents.DotNetBar.Rendering;
 using FISCA.Presentation.Controls;
 using K12.Data.Configuration;
 
-namespace K12.懲戒通知單2013
+namespace K12.懲戒通知單2015
 {
     public partial class DemeritConfigForm : BaseForm
     {

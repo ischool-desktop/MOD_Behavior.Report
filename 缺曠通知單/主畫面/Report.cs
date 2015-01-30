@@ -9,8 +9,9 @@ using Aspose.Words;
 using FISCA.DSAUtil;
 using K12.Data;
 using K12.Data.Configuration;
+using SmartSchool.ePaper;
 
-namespace K12.缺曠通知單2013
+namespace K12.缺曠通知單2015
 {
     internal class Report : IReport
     {
@@ -26,6 +27,11 @@ namespace K12.缺曠通知單2013
         ConfigOBJ obj;
 
         string entityName;
+
+        /// <summary>
+        /// 學生電子報表
+        /// </summary>
+        SmartSchool.ePaper.ElectronicPaper paperForStudent { get; set; }
 
         //轉縮寫
         Dictionary<string, string> absenceList = new Dictionary<string, string>();
@@ -89,6 +95,7 @@ namespace K12.缺曠通知單2013
                 obj.ConditionName2 = form.ConditionName2;
                 obj.ConditionNumber2 = form.ConditionNumber2;
                 obj.PrintStudentList = form.PrintStudentList;
+                obj.PaperUpdate = form._cbPaper; //是否列印電子報表
 
                 #endregion
 
@@ -146,53 +153,8 @@ namespace K12.缺曠通知單2013
             int currentStudentCount = 1;
             int totalStudentNumber = 0;
 
-            //Period List
-            List<string> periodList = new List<string>();
-
-            //????使用者所選取的所有假別種類????
-            List<string> userDefinedAbsenceList = new List<string>();
-
-            int DefinedType = 1;
-            foreach (string kind in configkeylist)
-            {
-                int DefinedAbsence = 1;
-                Allmapping.Add("類型" + DefinedType, kind);
-
-                foreach (string type in config[kind])
-                {
-                    Allmapping.Add("類型" + DefinedType + "缺曠" + DefinedAbsence, type);
-                    DefinedAbsence++;
-
-                    if (!userDefinedAbsenceList.Contains(type))
-                    {
-                        userDefinedAbsenceList.Add(type);
-                    }
-                }
-
-                DefinedType++;
-            }
-
-            #region 取得所有學生ID
-            foreach (StudentRecord aStudent in SelectedStudents)
-            {
-                //建立學生資訊，班級、座號、學號、姓名、導師
-                string studentID = aStudent.ID;
-                if (!StudentSuperOBJ.ContainsKey(studentID))
-                    StudentSuperOBJ.Add(studentID, new StudentOBJ());
-
-                //學生ID清單
-                if (!allStudentID.Contains(studentID))
-                    allStudentID.Add(studentID);
-
-                StudentSuperOBJ[studentID].student = aStudent;
-                StudentSuperOBJ[studentID].TeacherName = aStudent.Class != null ? (aStudent.Class.Teacher != null ? aStudent.Class.Teacher.Name : "") : "";
-                StudentSuperOBJ[studentID].ClassName = aStudent.Class != null ? aStudent.Class.Name : "";
-                StudentSuperOBJ[studentID].SeatNo = aStudent.SeatNo.HasValue ? aStudent.SeatNo.Value.ToString() : "";
-                StudentSuperOBJ[studentID].StudentNumber = aStudent.StudentNumber;
-            }
-            #endregion
-
             #region 取得 Period List
+            List<string> periodList = new List<string>();
             Dictionary<string, string> TestPeriodList = new Dictionary<string, string>();
             int PeriodX = 1;
             Dictionary<string, object> mappingAccessory_copy = new Dictionary<string, object>();
@@ -224,8 +186,57 @@ namespace K12.缺曠通知單2013
                 {
                     TestAbsenceList.Add(each.Abbreviation, each.Name);
                 }
+
+
+                //Allmapping.Add("類型" + DefinedType + "缺曠" + DefinedAbsence,
+
             }
             #endregion
+
+            //????使用者所選取的所有假別種類????
+            List<string> userDefinedAbsenceList = new List<string>();
+
+            int DefinedType = 1;
+            foreach (string kind in configkeylist)
+            {
+                int DefinedAbsence = 1;
+                Allmapping.Add("類型" + DefinedType, kind);
+
+                foreach (string type in config[kind])
+                {
+                    Allmapping.Add("類型" + DefinedType + "缺曠" + DefinedAbsence, type);
+                    Allmapping.Add("類型" + DefinedType + "縮寫" + DefinedAbsence, absenceList[type]);
+                    DefinedAbsence++;
+
+                    if (!userDefinedAbsenceList.Contains(type))
+                    {
+                        userDefinedAbsenceList.Add(type);
+                    }
+                }
+
+                DefinedType++;
+            }
+
+            #region 取得所有學生ID
+            foreach (StudentRecord aStudent in SelectedStudents)
+            {
+                //建立學生資訊，班級、座號、學號、姓名、導師
+                string studentID = aStudent.ID;
+                if (!StudentSuperOBJ.ContainsKey(studentID))
+                    StudentSuperOBJ.Add(studentID, new StudentOBJ());
+
+                //學生ID清單
+                if (!allStudentID.Contains(studentID))
+                    allStudentID.Add(studentID);
+
+                StudentSuperOBJ[studentID].student = aStudent;
+                StudentSuperOBJ[studentID].TeacherName = aStudent.Class != null ? (aStudent.Class.Teacher != null ? aStudent.Class.Teacher.Name : "") : "";
+                StudentSuperOBJ[studentID].ClassName = aStudent.Class != null ? aStudent.Class.Name : "";
+                StudentSuperOBJ[studentID].SeatNo = aStudent.SeatNo.HasValue ? aStudent.SeatNo.Value.ToString() : "";
+                StudentSuperOBJ[studentID].StudentNumber = aStudent.StudentNumber;
+            }
+            #endregion
+
 
             #region 取得所有學生缺曠紀錄，日期區間
 
@@ -518,6 +529,7 @@ namespace K12.缺曠通知單2013
 
             Document doc = new Document();
             doc.Sections.Clear();
+            paperForStudent = new SmartSchool.ePaper.ElectronicPaper("缺曠通知單_" + DateTime.Now.Year + DateTime.Now.Month.ToString().PadLeft(2, '0') + DateTime.Now.Day.ToString().PadLeft(2, '0'), School.DefaultSchoolYear, School.DefaultSemester, SmartSchool.ePaper.ViewerType.Student);
 
             foreach (string studentID in StudentSuperOBJ.Keys)
             {
@@ -714,6 +726,16 @@ namespace K12.缺曠通知單2013
 
                     Aspose.Words.Node eachSectionaccessory = accessoryDoc.Sections[0].Clone();
                     eachSection.Sections.Add(eachSection.ImportNode(eachSectionaccessory, true));
+
+                    MemoryStream stream = new MemoryStream();
+                    eachSection.Save(stream, SaveFormat.Doc);
+                    paperForStudent.Append(new PaperItem(PaperFormat.Office2003Doc, stream, eachStudentInfo.student.ID));
+                }
+                else
+                {
+                    MemoryStream stream = new MemoryStream();
+                    eachSection.Save(stream, SaveFormat.Doc);
+                    paperForStudent.Append(new PaperItem(PaperFormat.Office2003Doc, stream, eachStudentInfo.student.ID));
                 }
 
                 foreach (Aspose.Words.Section each in eachSection.Sections)
@@ -776,6 +798,12 @@ namespace K12.缺曠通知單2013
                 wb.Worksheets[0].AutoFitColumns();
             }
             #endregion
+
+            //是否上傳電子報表
+            if (obj.PaperUpdate)
+            {
+                SmartSchool.ePaper.DispatcherProvider.Dispatch(paperForStudent);
+            }
 
             string path = Path.Combine(Application.StartupPath, "Reports");
             string path2 = Path.Combine(Application.StartupPath, "Reports");

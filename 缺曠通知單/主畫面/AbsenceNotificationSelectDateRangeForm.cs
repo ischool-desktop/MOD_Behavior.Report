@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using System.Xml;
 using K12.Data.Configuration;
 
-namespace K12.缺曠通知單2013
+namespace K12.缺曠通知單2015
 {
     public partial class AbsenceNotificationSelectDateRangeForm : SelectDateRangeForm
     {
@@ -30,6 +30,8 @@ namespace K12.缺曠通知單2013
         string configName = "缺曠通知單_ForK12.2013";
         string addconfigName = "缺曠通知單_ForK12_缺曠別設定.2013";
 
+        public bool _cbPaper = false;
+
         public string ReceiveName
         {
             get { return _receiveName; }
@@ -50,7 +52,7 @@ namespace K12.缺曠通知單2013
             }
         }
 
-        private K12.缺曠通知單2013.AbsenceNotificationConfigForm.DateRangeMode _mode = K12.缺曠通知單2013.AbsenceNotificationConfigForm.DateRangeMode.Month;
+        private AbsenceNotificationConfigForm.DateRangeMode _mode = AbsenceNotificationConfigForm.DateRangeMode.Month;
 
         private bool _useDefaultTemplate = true;
 
@@ -196,8 +198,8 @@ namespace K12.缺曠通知單2013
 
                 if (dateRangeMode != null)
                 {
-                    _mode = (K12.缺曠通知單2013.AbsenceNotificationConfigForm.DateRangeMode)int.Parse(dateRangeMode.InnerText);
-                    if (_mode != K12.缺曠通知單2013.AbsenceNotificationConfigForm.DateRangeMode.Custom)
+                    _mode = (AbsenceNotificationConfigForm.DateRangeMode)int.Parse(dateRangeMode.InnerText);
+                    if (_mode != AbsenceNotificationConfigForm.DateRangeMode.Custom)
                         dateTimeInput2.Enabled = false;
                     else
                         dateTimeInput2.Enabled = true;
@@ -265,7 +267,7 @@ namespace K12.缺曠通知單2013
         {
             switch (_mode)
             {
-                case K12.缺曠通知單2013.AbsenceNotificationConfigForm.DateRangeMode.Month: //月
+                case AbsenceNotificationConfigForm.DateRangeMode.Month: //月
                     {
                         DateTime a = dateTimeInput1.Value;
                         a = GetMonthFirstDay(a);
@@ -273,7 +275,7 @@ namespace K12.缺曠通知單2013
                         dateTimeInput2.Text = a.AddMonths(1).AddDays(-1).ToShortDateString();
                         break;
                     }
-                case K12.缺曠通知單2013.AbsenceNotificationConfigForm.DateRangeMode.Week: //週
+                case AbsenceNotificationConfigForm.DateRangeMode.Week: //週
                     {
                         DateTime b = dateTimeInput1.Value;
                         b = GetWeekFirstDay(b);
@@ -281,7 +283,7 @@ namespace K12.缺曠通知單2013
                         dateTimeInput2.Text = b.AddDays(5).ToShortDateString();
                         break;
                     }
-                case K12.缺曠通知單2013.AbsenceNotificationConfigForm.DateRangeMode.Custom: //自訂
+                case AbsenceNotificationConfigForm.DateRangeMode.Custom: //自訂
                     {
                         //dateTimeInput2.Text = dateTimeInput1.Text = DateTime.Today.ToShortDateString();
                         break;
@@ -341,11 +343,11 @@ namespace K12.缺曠通知單2013
 
         private void dateTimeInput1_TextChanged(object sender, EventArgs e)
         {
-            if (_startTextBoxOK && _mode != K12.缺曠通知單2013.AbsenceNotificationConfigForm.DateRangeMode.Custom)
+            if (_startTextBoxOK && _mode != AbsenceNotificationConfigForm.DateRangeMode.Custom)
             {
                 switch (_mode)
                 {
-                    case K12.缺曠通知單2013.AbsenceNotificationConfigForm.DateRangeMode.Month: //月
+                    case AbsenceNotificationConfigForm.DateRangeMode.Month: //月
                         {
                             _startDate = GetMonthFirstDay(DateTime.Parse(dateTimeInput1.Text));
                             _endDate = _startDate.AddMonths(1).AddDays(-1);
@@ -354,7 +356,7 @@ namespace K12.缺曠通知單2013
                             _printable = true;
                             break;
                         }
-                    case K12.缺曠通知單2013.AbsenceNotificationConfigForm.DateRangeMode.Week: //週
+                    case AbsenceNotificationConfigForm.DateRangeMode.Week: //週
                         {
                             _startDate = GetWeekFirstDay(DateTime.Parse(dateTimeInput1.Text));
                             _endDate = _startDate.AddDays(4);
@@ -363,7 +365,7 @@ namespace K12.缺曠通知單2013
                             _printable = true;
                             break;
                         }
-                    case K12.缺曠通知單2013.AbsenceNotificationConfigForm.DateRangeMode.Custom: //自訂
+                    case AbsenceNotificationConfigForm.DateRangeMode.Custom: //自訂
                         break;
                     default:
                         throw new Exception("Date Range Mode Error");
@@ -412,6 +414,11 @@ namespace K12.缺曠通知單2013
                     return;
                 }
             }
+        }
+
+        private void cbUpdate_CheckedChanged(object sender, EventArgs e)
+        {
+            _cbPaper = cbUpdate.Checked;
         }
     }
 }

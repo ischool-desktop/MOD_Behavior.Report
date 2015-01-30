@@ -8,8 +8,8 @@
     <ProjectGuid>{32E229E1-2A0B-4DFD-B18A-85E6A1A70327}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>K12.懲戒通知單2013</RootNamespace>
-    <AssemblyName>K12.DemeritAnAdviceNote.2013</AssemblyName>
+    <RootNamespace>K12.懲戒通知單2015</RootNamespace>
+    <AssemblyName>K12.DemeritAnAdviceNote.2015</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -109,6 +109,11 @@
     <Reference Include="K12.Presentation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\K12.Presentation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SmartSchool.ePaper, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\SmartSchool.ePaper.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -228,6 +233,8 @@
     <Content Include="Library\K12.Data.xml" />
     <Content Include="Library\K12.Presentation.dll" />
     <Content Include="Library\K12.Presentation.xml" />
+    <Content Include="Library\SmartSchool.ePaper.dll" />
+    <Content Include="Library\SmartSchool.ePaper.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

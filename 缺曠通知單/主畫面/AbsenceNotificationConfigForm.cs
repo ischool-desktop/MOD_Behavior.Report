@@ -8,7 +8,7 @@ using FISCA.DSAUtil;
 using FISCA.Presentation.Controls;
 using K12.Data.Configuration;
 
-namespace K12.缺曠通知單2013
+namespace K12.缺曠通知單2015
 {
     public partial class AbsenceNotificationConfigForm : BaseForm
     {
@@ -21,6 +21,7 @@ namespace K12.缺曠通知單2013
         private bool _printStudentList;
 
         string configName = "缺曠通知單_ForK12.2013";
+        string addconfigName = "缺曠通知單_ForK12_缺曠別設定.2013";
 
         public AbsenceNotificationConfigForm(bool defaultTemplate, bool printHasRecordOnly, DateRangeMode mode, byte[] buffer, string name, string address, string conditionName, string conditionNumber, string conditionName2, string conditionNumber2, bool printStudentList)
         {
@@ -111,7 +112,7 @@ namespace K12.缺曠通知單2013
             #region 取得使用者自己設定的內容
             List<string> list = new List<string>();
             list.Add("");
-            ConfigData cd = K12.Data.School.Configuration["缺曠通知單_ForK12_缺曠別設定"];
+            ConfigData cd = K12.Data.School.Configuration[addconfigName];
             string strr = cd["XmlData"];
 
             if (strr != "")
@@ -136,16 +137,6 @@ namespace K12.缺曠通知單2013
                 comboBoxEx4.Items.Add(each);
             }
             #endregion
-
-            //取得系統內的設定
-            //DSResponse dsrsp = Config.GetAbsenceList();
-            //DSXmlHelper helper = dsrsp.GetContent();
-            //comboBoxEx3.Items.Clear();
-            //comboBoxEx3.Items.Add("");
-            //foreach (XmlElement element in helper.GetElements("Absence"))
-            //{
-            //    comboBoxEx3.Items.Add(element.GetAttribute("Name"));
-            //}
         }
 
         void ScoreCalcRuleEditor_ColorTableChanged(object sender, EventArgs e)

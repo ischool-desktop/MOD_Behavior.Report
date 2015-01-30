@@ -8,7 +8,7 @@ using FISCA.Presentation.Controls;
 using K12.Data.Configuration;
 using K12.Data;
 
-namespace K12.缺曠通知單2013
+namespace K12.缺曠通知單2015
 {
     public partial class SelectTypeForm : BaseForm
     {

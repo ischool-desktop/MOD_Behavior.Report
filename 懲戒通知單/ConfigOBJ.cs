@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace K12.懲戒通知單2013
+namespace K12.懲戒通知單2015
 {
     class ConfigOBJ
     {
@@ -49,5 +49,7 @@ namespace K12.懲戒通知單2013
         /// 是否列印學生清單
         /// </summary>
         public bool PrintStudentList { get; set; }
+
+        public bool PaperUpdate { get; set; }
     }
 }
