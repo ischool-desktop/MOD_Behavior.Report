@@ -565,8 +565,9 @@ namespace K12.懲戒通知單2015
                 MemoryStream accessoryMemory;
                 Aspose.Words.Document accessoryDoc;
 
-                //懲戒明細
+                //懲戒附件1
                 bool IsAccessory = false;
+
                 //合併列印的資料
                 Dictionary<string, object> mappingAccessory = new Dictionary<string, object>();
                 mappingAccessory.Add("學年度", School.DefaultSchoolYear);
@@ -581,23 +582,23 @@ namespace K12.懲戒通知單2015
 
                 #endregion
 
-                int demerit1 = 1;
+                int Demerit1 = 1;
                 object[] objectValues = new object[] { StudentSuperOBJ[student].DemeritStringList };
                 foreach (DemStr demerit in StudentSuperOBJ[student].DemeritStringList)
                 {
-                    if (demerit1 <= 10) //資料數大於10,透過附件列印
+                    if (Demerit1 <= 10) //資料數大於10,透過附件列印
                     {
 
-                        mapping.Add("日期" + demerit1, demerit._date);
-                        mapping.Add("內容" + demerit1, demerit._value);
-                        demerit1++;
+                        mapping.Add("日期" + Demerit1, demerit._date);
+                        mapping.Add("內容" + Demerit1, demerit._value);
+                        Demerit1++;
                     }
                     else
                     {
                         IsAccessory = true;
-                        mappingAccessory.Add("日期" + demerit1, demerit._date);
-                        mappingAccessory.Add("內容" + demerit1, demerit._value);
-                        demerit1++;
+                        mappingAccessory.Add("日期" + Demerit1, demerit._date);
+                        mappingAccessory.Add("內容" + Demerit1, demerit._value);
+                        Demerit1++;
                     }
                 }
 
@@ -615,7 +616,7 @@ namespace K12.懲戒通知單2015
                 eachDoc.MailMerge.Execute(keys, values);
                 eachDoc.MailMerge.DeleteFields(); //刪除未合併之內容
 
-
+                //如果要列印附件一
                 if (IsAccessory)
                 {
                     #region 附件

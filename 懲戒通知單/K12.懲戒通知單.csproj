@@ -41,7 +41,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\ischool_Senior with FISCA\FiscaRuntime\addmodules\K12Behavior\</OutputPath>
+    <OutputPath>obj\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -230,7 +230,9 @@
     <Content Include="Library\Framework.dll" />
     <Content Include="Library\K12.Data.dll" />
     <Content Include="Library\K12.Data.pdb" />
-    <Content Include="Library\K12.Data.xml" />
+    <Content Include="Library\K12.Data.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Library\K12.Presentation.dll" />
     <Content Include="Library\K12.Presentation.xml" />
     <Content Include="Library\SmartSchool.ePaper.dll" />

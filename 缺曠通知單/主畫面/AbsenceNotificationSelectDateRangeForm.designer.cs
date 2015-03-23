@@ -49,9 +49,10 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(10, 10);
+            this.labelX1.Location = new System.Drawing.Point(10, 14);
             this.labelX1.Margin = new System.Windows.Forms.Padding(3);
             this.labelX1.Size = new System.Drawing.Size(167, 21);
+            this.labelX1.TabIndex = 0;
             // 
             // labelX2
             // 
@@ -63,11 +64,13 @@
             this.labelX2.Location = new System.Drawing.Point(154, 66);
             this.labelX2.Margin = new System.Windows.Forms.Padding(3);
             this.labelX2.Size = new System.Drawing.Size(20, 21);
+            this.labelX2.TabIndex = 2;
             this.labelX2.Text = "至";
             // 
             // buttonX1
             // 
-            this.buttonX1.Location = new System.Drawing.Point(281, 213);
+            this.buttonX1.Location = new System.Drawing.Point(245, 249);
+            this.buttonX1.TabIndex = 11;
             // 
             // dateTimeInput2
             // 
@@ -125,6 +128,7 @@
             this.dateTimeInput2.MonthCalendar.TodayButtonVisible = true;
             this.dateTimeInput2.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
             this.dateTimeInput2.Size = new System.Drawing.Size(140, 25);
+            this.dateTimeInput2.TabIndex = 3;
             this.dateTimeInput2.TextChanged += new System.EventHandler(this.dateTimeInput2_TextChanged);
             // 
             // dateTimeInput1
@@ -183,17 +187,18 @@
             this.dateTimeInput1.MonthCalendar.TodayButtonVisible = true;
             this.dateTimeInput1.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
             this.dateTimeInput1.Size = new System.Drawing.Size(140, 25);
+            this.dateTimeInput1.TabIndex = 1;
             this.dateTimeInput1.TextChanged += new System.EventHandler(this.dateTimeInput1_TextChanged);
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel1.Location = new System.Drawing.Point(5, 221);
+            this.linkLabel1.Location = new System.Drawing.Point(7, 257);
             this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(60, 17);
-            this.linkLabel1.TabIndex = 3;
+            this.linkLabel1.TabIndex = 8;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "列印設定";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
@@ -202,11 +207,11 @@
             // 
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel2.Location = new System.Drawing.Point(73, 221);
+            this.linkLabel2.Location = new System.Drawing.Point(75, 257);
             this.linkLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(60, 17);
-            this.linkLabel2.TabIndex = 3;
+            this.linkLabel2.TabIndex = 9;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "假別設定";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
@@ -216,10 +221,10 @@
             this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX2.BackColor = System.Drawing.Color.Transparent;
             this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(356, 213);
+            this.buttonX2.Location = new System.Drawing.Point(320, 249);
             this.buttonX2.Name = "buttonX2";
             this.buttonX2.Size = new System.Drawing.Size(70, 25);
-            this.buttonX2.TabIndex = 4;
+            this.buttonX2.TabIndex = 12;
             this.buttonX2.Text = "取消";
             this.buttonX2.Click += new System.EventHandler(this.buttonX2_Click);
             // 
@@ -227,10 +232,10 @@
             // 
             this.linkLabel3.AutoSize = true;
             this.linkLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel3.Location = new System.Drawing.Point(151, 221);
+            this.linkLabel3.Location = new System.Drawing.Point(145, 257);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(86, 17);
-            this.linkLabel3.TabIndex = 14;
+            this.linkLabel3.TabIndex = 10;
             this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "功能變數總表";
             this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
@@ -244,11 +249,11 @@
             // 
             this.labelX3.BackgroundStyle.Class = "";
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(17, 150);
+            this.labelX3.Location = new System.Drawing.Point(17, 154);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(269, 39);
-            this.labelX3.TabIndex = 16;
-            this.labelX3.Text = "說明:本報表將列印docx與xlsx檔案\r\n您需要OFFICE 2007以上版本Word開啟檔案";
+            this.labelX3.Size = new System.Drawing.Size(269, 73);
+            this.labelX3.TabIndex = 7;
+            this.labelX3.Text = "說明:\r\n1.本報表將列印docx與xlsx檔案\r\n您需要OFFICE 2007以上版本Word開啟檔案\r\n2.當缺曠筆數超過12筆,會列印於第二張附件";
             // 
             // cbUpdate
             // 
@@ -259,11 +264,11 @@
             // 
             this.cbUpdate.BackgroundStyle.Class = "";
             this.cbUpdate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cbUpdate.Location = new System.Drawing.Point(14, 116);
+            this.cbUpdate.Location = new System.Drawing.Point(17, 118);
             this.cbUpdate.Name = "cbUpdate";
             this.cbUpdate.Size = new System.Drawing.Size(147, 21);
             this.cbUpdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbUpdate.TabIndex = 15;
+            this.cbUpdate.TabIndex = 6;
             this.cbUpdate.Text = "列印並上傳電子報表";
             this.cbUpdate.TextColor = System.Drawing.Color.Red;
             this.cbUpdate.CheckedChanged += new System.EventHandler(this.cbUpdate_CheckedChanged);
@@ -272,20 +277,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 251);
+            this.ClientSize = new System.Drawing.Size(402, 283);
+            this.Controls.Add(this.buttonX2);
             this.Controls.Add(this.labelX3);
             this.Controls.Add(this.cbUpdate);
             this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.linkLabel2);
-            this.Controls.Add(this.buttonX2);
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(3);
             this.Name = "AbsenceNotificationSelectDateRangeForm";
             this.Text = "缺曠通知單(2015)";
-            this.Controls.SetChildIndex(this.buttonX2, 0);
             this.Controls.SetChildIndex(this.dateTimeInput2, 0);
-            this.Controls.SetChildIndex(this.buttonX1, 0);
             this.Controls.SetChildIndex(this.dateTimeInput1, 0);
             this.Controls.SetChildIndex(this.linkLabel2, 0);
             this.Controls.SetChildIndex(this.linkLabel1, 0);
@@ -294,6 +297,8 @@
             this.Controls.SetChildIndex(this.linkLabel3, 0);
             this.Controls.SetChildIndex(this.cbUpdate, 0);
             this.Controls.SetChildIndex(this.labelX3, 0);
+            this.Controls.SetChildIndex(this.buttonX2, 0);
+            this.Controls.SetChildIndex(this.buttonX1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput2)).EndInit();
