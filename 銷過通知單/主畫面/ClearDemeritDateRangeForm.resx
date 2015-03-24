@@ -126,4 +126,15 @@
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>289, 17</value>
   </metadata>
+  <data name="labelX3.Text" xml:space="preserve">
+    <value>說明:
+1.本報表將列印docx與xlsx檔案
+您需要OFFICE 2007以上版本Word開啟檔案
+2.當銷過筆數超5筆,會列印於第二張附件內
+3.&lt;懲戒事由&gt;超過35字元,將會填入 (...已簡略)字樣
+&lt;銷過事由&gt;超過25字元,將會填入 (...已簡略)字樣
+並於預設範本已註明請至Web2查詢完整內容
+4.本報表提供彈性的範本調整,使用大量Word
+&lt;功能變數&gt;之應用,請具備相關應用之知識再行列印</value>
+  </data>
 </root>

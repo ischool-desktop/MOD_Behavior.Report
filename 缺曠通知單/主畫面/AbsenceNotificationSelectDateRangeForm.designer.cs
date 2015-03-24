@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer();
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
@@ -69,7 +68,7 @@
             // 
             // buttonX1
             // 
-            this.buttonX1.Location = new System.Drawing.Point(245, 249);
+            this.buttonX1.Location = new System.Drawing.Point(245, 279);
             this.buttonX1.TabIndex = 11;
             // 
             // dateTimeInput2
@@ -194,7 +193,7 @@
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel1.Location = new System.Drawing.Point(7, 257);
+            this.linkLabel1.Location = new System.Drawing.Point(7, 287);
             this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(60, 17);
@@ -207,7 +206,7 @@
             // 
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel2.Location = new System.Drawing.Point(75, 257);
+            this.linkLabel2.Location = new System.Drawing.Point(75, 287);
             this.linkLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(60, 17);
@@ -221,7 +220,7 @@
             this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX2.BackColor = System.Drawing.Color.Transparent;
             this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(320, 249);
+            this.buttonX2.Location = new System.Drawing.Point(320, 279);
             this.buttonX2.Name = "buttonX2";
             this.buttonX2.Size = new System.Drawing.Size(70, 25);
             this.buttonX2.TabIndex = 12;
@@ -232,7 +231,7 @@
             // 
             this.linkLabel3.AutoSize = true;
             this.linkLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel3.Location = new System.Drawing.Point(145, 257);
+            this.linkLabel3.Location = new System.Drawing.Point(145, 287);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(86, 17);
             this.linkLabel3.TabIndex = 10;
@@ -251,9 +250,10 @@
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.Location = new System.Drawing.Point(17, 154);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(269, 73);
+            this.labelX3.Size = new System.Drawing.Size(311, 108);
             this.labelX3.TabIndex = 7;
-            this.labelX3.Text = "說明:\r\n1.本報表將列印docx與xlsx檔案\r\n您需要OFFICE 2007以上版本Word開啟檔案\r\n2.當缺曠筆數超過12筆,會列印於第二張附件";
+            this.labelX3.Text = "說明:\r\n1.本報表將列印docx與xlsx檔案\r\n您需要OFFICE 2007以上版本Word開啟檔案\r\n2.當缺曠筆數超過12筆,會列印於第二張附件\r\n3.本" +
+    "報表提供彈性的範本調整,使用大量Word\r\n<功能變數>之應用,請具備相關應用之知識再行列印";
             // 
             // cbUpdate
             // 
@@ -277,7 +277,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(402, 283);
+            this.ClientSize = new System.Drawing.Size(402, 317);
             this.Controls.Add(this.buttonX2);
             this.Controls.Add(this.labelX3);
             this.Controls.Add(this.cbUpdate);

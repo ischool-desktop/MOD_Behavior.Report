@@ -30,6 +30,7 @@ namespace K12.銷過通知單2015
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClearDemeritDateRangeForm));
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
@@ -70,7 +71,7 @@ namespace K12.銷過通知單2015
             // 
             // buttonX1
             // 
-            this.buttonX1.Location = new System.Drawing.Point(231, 259);
+            this.buttonX1.Location = new System.Drawing.Point(231, 339);
             // 
             // dateTimeInput2
             // 
@@ -193,7 +194,7 @@ namespace K12.銷過通知單2015
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
             this.linkLabel1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.linkLabel1.Location = new System.Drawing.Point(12, 267);
+            this.linkLabel1.Location = new System.Drawing.Point(12, 347);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(60, 17);
             this.linkLabel1.TabIndex = 3;
@@ -211,7 +212,7 @@ namespace K12.銷過通知單2015
             this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX2.BackColor = System.Drawing.Color.Transparent;
             this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(306, 259);
+            this.buttonX2.Location = new System.Drawing.Point(306, 339);
             this.buttonX2.Name = "buttonX2";
             this.buttonX2.Size = new System.Drawing.Size(70, 25);
             this.buttonX2.TabIndex = 4;
@@ -267,9 +268,9 @@ namespace K12.銷過通知單2015
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.Location = new System.Drawing.Point(18, 164);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(269, 73);
+            this.labelX3.Size = new System.Drawing.Size(311, 160);
             this.labelX3.TabIndex = 14;
-            this.labelX3.Text = "說明:\r\n1.本報表將列印docx與xlsx檔案\r\n您需要OFFICE 2007以上版本Word開啟檔案\r\n2.當銷過筆數超5筆,會列印於第二張附件內";
+            this.labelX3.Text = resources.GetString("labelX3.Text");
             // 
             // cbUpdate
             // 
@@ -293,7 +294,7 @@ namespace K12.銷過通知單2015
             // 
             this.linkLabel3.AutoSize = true;
             this.linkLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel3.Location = new System.Drawing.Point(92, 267);
+            this.linkLabel3.Location = new System.Drawing.Point(92, 347);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(86, 17);
             this.linkLabel3.TabIndex = 15;
@@ -305,7 +306,7 @@ namespace K12.銷過通知單2015
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(388, 295);
+            this.ClientSize = new System.Drawing.Size(388, 380);
             this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.labelX3);
             this.Controls.Add(this.cbUpdate);

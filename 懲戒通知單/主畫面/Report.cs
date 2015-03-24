@@ -30,8 +30,6 @@ namespace K12.懲戒通知單2015
 
         string entityName;
 
-        bool PrintUpdateStudentFile = false;
-
         /// <summary>
         /// 學生電子報表
         /// </summary>
@@ -341,29 +339,34 @@ namespace K12.懲戒通知單2015
                         DemStr ds = new DemStr();
                         ds._date = occurMonthDay;
 
-                        StringBuilder detailString = new StringBuilder();
-                        detailString.Append(occurMonthDay + " "); //日期
-
                         if (!string.IsNullOrEmpty(reason))
                         {
-                            detailString.Append(reason + " "); //事由
-                            ds._value += reason + "_";
+                            if (reason.Length > 35)
+                            {
+                                string newReason = reason.Remove(35);
+                                ds._value += newReason + " (...已簡略)" + "_";
+                                StudentSuperOBJ[var.RefStudentID].IsNewReason = true;
+                            }
+                            else
+                            {
+                                ds._value += reason + "_";
+                            }
                         }
 
                         if (var.DemeritA != 0)
                         {
                             StudentSuperOBJ[var.RefStudentID].DemeritA += var.DemeritA.Value;
-                            ds._value += "大過：" + var.DemeritA.Value.ToString() + "_";
+                            ds._value += "大過「" + var.DemeritA.Value.ToString() + "」";
                         }
                         if (var.DemeritB != 0)
                         {
                             StudentSuperOBJ[var.RefStudentID].DemeritB += var.DemeritB.Value;
-                            ds._value += "小過：" + var.DemeritB.Value.ToString() + "_";
+                            ds._value += "小過「" + var.DemeritB.Value.ToString() + "」";
                         }
                         if (var.DemeritC != 0)
                         {
                             StudentSuperOBJ[var.RefStudentID].DemeritC += var.DemeritC.Value;
-                            ds._value += "警告：" + var.DemeritC.Value.ToString();
+                            ds._value += "警告「" + var.DemeritC.Value.ToString() + "」";
                         }
 
                         //明細資料
@@ -521,6 +524,7 @@ namespace K12.懲戒通知單2015
                 mapping.Add("座號", eachStudentInfo.SeatNo);
                 mapping.Add("學號", eachStudentInfo.StudentNumber);
                 mapping.Add("導師", eachStudentInfo.TeacherName);
+
                 mapping.Add("資料期間", obj.StartDate.ToShortDateString() + " 至 " + obj.EndDate.ToShortDateString());
 
                 //收件人資料
@@ -559,6 +563,11 @@ namespace K12.懲戒通知單2015
                 mapping.Add("本期累計大過", eachStudentInfo.DemeritA);
                 mapping.Add("本期累計小過", eachStudentInfo.DemeritB);
                 mapping.Add("本期累計警告", eachStudentInfo.DemeritC);
+
+                if (eachStudentInfo.IsNewReason)
+                {
+                    mapping.Add("註1", "註1:懲戒事由,如標記 (…已簡略) 表示事由內容過多,請至Web2查閱詳細內容");
+                }
 
                 #region 附件
 

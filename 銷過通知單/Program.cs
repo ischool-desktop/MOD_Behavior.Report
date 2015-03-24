@@ -22,7 +22,7 @@ namespace K12.銷過通知單2015
             string URL學生銷過通知單 = "ischool/高中系統/共用/學務/學生/報表/銷過通知單_2013";
             string URL班級銷過通知單 = "ischool/高中系統/共用/學務/班級/報表/銷過通知單_2013";
 
-            string toolName = "銷過通知單(2015測試版)";
+            string toolName = "銷過通知單(測試版)";
 
             FISCA.Features.Register(URL學生銷過通知單, arg =>
             {

@@ -78,5 +78,10 @@ namespace K12.懲戒通知單2015
         public string FatherName { get; set; }
         //母親
         public string MotherName { get; set; }
+
+        /// <summary>
+        /// 是否註記說明
+        /// </summary>
+        public bool IsNewReason { get; set; }
     }
 }

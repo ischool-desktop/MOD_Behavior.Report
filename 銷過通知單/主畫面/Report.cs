@@ -175,8 +175,35 @@ namespace K12.銷過通知單2015
 
 
                     cdd.登錄日期 = occurMonthDay; //日期
-                    cdd.懲戒事由 = reason; //事由
-                    cdd.銷過事由 = var.ClearReason;
+
+                    if (!string.IsNullOrEmpty(reason))
+                    {
+                        if (reason.Length > 35)
+                        {
+                            string newReason = reason.Remove(35);
+                            cdd.懲戒事由 += newReason + " (...已簡略)";
+                            StudentSuperOBJ[var.RefStudentID].IsNewReason = true;
+                        }
+                        else
+                        {
+                            cdd.懲戒事由 += reason;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(var.ClearReason))
+                    {
+                        if (var.ClearReason.Length > 25)
+                        {
+                            string newReason = var.ClearReason.Remove(25);
+                            cdd.銷過事由 += newReason + " (...已簡略)";
+                            StudentSuperOBJ[var.RefStudentID].IsNewReason = true;
+                        }
+                        else
+                        {
+                            cdd.銷過事由 += var.ClearReason;
+                        }
+                    }
+
                     if (var.ClearDate.HasValue)
                     {
                         cdd.銷過日期 = var.ClearDate.Value.ToShortDateString();
@@ -360,6 +387,11 @@ namespace K12.銷過通知單2015
 
                 mapping.Add("學年度", School.DefaultSchoolYear);
                 mapping.Add("學期", School.DefaultSemester);
+
+                if (eachStudentInfo.IsNewReason)
+                {
+                    mapping.Add("註1", "註1:懲戒事由/銷過事由,如標記 (…已簡略) 表示事由內容過多,請至Web2查閱詳細內容");
+                }
 
                 #region 附件
 

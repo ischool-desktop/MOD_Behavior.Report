@@ -69,7 +69,7 @@ namespace K12.懲戒通知單2015
             // 
             // buttonX1
             // 
-            this.buttonX1.Location = new System.Drawing.Point(229, 254);
+            this.buttonX1.Location = new System.Drawing.Point(229, 315);
             // 
             // dateTimeInput2
             // 
@@ -191,7 +191,7 @@ namespace K12.懲戒通知單2015
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
             this.linkLabel1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.linkLabel1.Location = new System.Drawing.Point(12, 262);
+            this.linkLabel1.Location = new System.Drawing.Point(12, 323);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(60, 17);
             this.linkLabel1.TabIndex = 3;
@@ -208,7 +208,7 @@ namespace K12.懲戒通知單2015
             this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX2.BackColor = System.Drawing.Color.Transparent;
             this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(304, 254);
+            this.buttonX2.Location = new System.Drawing.Point(304, 315);
             this.buttonX2.Name = "buttonX2";
             this.buttonX2.Size = new System.Drawing.Size(70, 25);
             this.buttonX2.TabIndex = 4;
@@ -270,15 +270,17 @@ namespace K12.懲戒通知單2015
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.Location = new System.Drawing.Point(15, 162);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(269, 73);
+            this.labelX3.Size = new System.Drawing.Size(311, 142);
             this.labelX3.TabIndex = 12;
-            this.labelX3.Text = "說明:\r\n1.本報表將列印docx與xlsx檔案\r\n您需要OFFICE 2007以上版本Word開啟檔案\r\n2.當懲戒筆數超過12筆,會列印於第二張附件";
+            this.labelX3.Text = "說明:\r\n1.報表將列印docx與xlsx檔案\r\n您需要OFFICE 2007以上版本Word開啟檔案\r\n2.當懲戒筆數超過12筆,會列印於第二張附件\r\n3.<懲" +
+    "戒事由>超過35字元,將會填入 [...已簡略]字樣\r\n預設範本已註明請至Web2查詢完整內容\r\n4.本報表提供彈性的範本調整,使用大量Word\r\n<功能變數>" +
+    "之應用,請具備相關應用之知識再行列印";
             // 
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel2.Location = new System.Drawing.Point(90, 262);
+            this.linkLabel2.Location = new System.Drawing.Point(90, 323);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(86, 17);
             this.linkLabel2.TabIndex = 13;
@@ -290,7 +292,7 @@ namespace K12.懲戒通知單2015
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(388, 289);
+            this.ClientSize = new System.Drawing.Size(388, 348);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.labelX3);
             this.Controls.Add(this.cbUpdate);

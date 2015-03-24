@@ -17,7 +17,7 @@ namespace K12.懲戒通知單2015
             string URL學生懲戒通知單 = "ischool/高中系統/共用/學務/學生/報表/懲戒通知單_2013";
             string URL班級懲戒通知單 = "ischool/高中系統/共用/學務/班級/報表/懲戒通知單_2013";
 
-            string toolName = "懲戒通知單(2015測試版)";
+            string toolName = "懲戒通知單(測試版)";
 
             FISCA.Features.Register(URL學生懲戒通知單, arg =>
                {
