@@ -29,6 +29,7 @@ namespace K12.Behavior.MeritDemeritConfirmation
             StudentRecordDic = new Dictionary<string, StudentRecord>();
 
             List<StudentRecord> SrList = K12.Data.Student.SelectByIDs(dic.Keys);
+            SrList.Sort(new Comparison<StudentRecord>(tool.StudentComparer));
 
             foreach (StudentRecord each in SrList)
             {
@@ -38,7 +39,6 @@ namespace K12.Behavior.MeritDemeritConfirmation
                 }
             }
 
-            SrList.Sort(new Comparison<StudentRecord>(tool.StudentComparer));
 
         }
     }
