@@ -38,6 +38,8 @@
             this.lbInTo = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.dateTimeInput3 = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput3)).BeginInit();
@@ -49,7 +51,7 @@
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnSave.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
-            this.btnSave.Location = new System.Drawing.Point(203, 155);
+            this.btnSave.Location = new System.Drawing.Point(203, 165);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(70, 25);
             this.btnSave.TabIndex = 0;
@@ -62,7 +64,7 @@
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnExit.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
-            this.btnExit.Location = new System.Drawing.Point(278, 155);
+            this.btnExit.Location = new System.Drawing.Point(278, 165);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(70, 25);
             this.btnExit.TabIndex = 1;
@@ -83,7 +85,7 @@
             this.dateTimeInput1.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
             this.dateTimeInput1.FreeTextEntryMode = true;
             this.dateTimeInput1.IsPopupCalendarOpen = false;
-            this.dateTimeInput1.Location = new System.Drawing.Point(29, 56);
+            this.dateTimeInput1.Location = new System.Drawing.Point(29, 47);
             // 
             // 
             // 
@@ -145,7 +147,7 @@
             this.dateTimeInput2.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
             this.dateTimeInput2.FreeTextEntryMode = true;
             this.dateTimeInput2.IsPopupCalendarOpen = false;
-            this.dateTimeInput2.Location = new System.Drawing.Point(208, 56);
+            this.dateTimeInput2.Location = new System.Drawing.Point(208, 47);
             // 
             // 
             // 
@@ -214,7 +216,7 @@
             this.lblPrintSetup.AutoSize = true;
             this.lblPrintSetup.BackColor = System.Drawing.Color.Transparent;
             this.lblPrintSetup.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
-            this.lblPrintSetup.Location = new System.Drawing.Point(6, 163);
+            this.lblPrintSetup.Location = new System.Drawing.Point(6, 173);
             this.lblPrintSetup.Name = "lblPrintSetup";
             this.lblPrintSetup.Size = new System.Drawing.Size(60, 17);
             this.lblPrintSetup.TabIndex = 5;
@@ -227,7 +229,7 @@
             this.lblAttendance.AutoSize = true;
             this.lblAttendance.BackColor = System.Drawing.Color.Transparent;
             this.lblAttendance.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
-            this.lblAttendance.Location = new System.Drawing.Point(71, 163);
+            this.lblAttendance.Location = new System.Drawing.Point(71, 173);
             this.lblAttendance.Name = "lblAttendance";
             this.lblAttendance.Size = new System.Drawing.Size(60, 17);
             this.lblAttendance.TabIndex = 6;
@@ -245,7 +247,7 @@
             this.lbInTo.BackgroundStyle.Class = "";
             this.lbInTo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lbInTo.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
-            this.lbInTo.Location = new System.Drawing.Point(170, 58);
+            this.lbInTo.Location = new System.Drawing.Point(170, 49);
             this.lbInTo.Name = "lbInTo";
             this.lbInTo.Size = new System.Drawing.Size(20, 21);
             this.lbInTo.TabIndex = 7;
@@ -260,11 +262,11 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(103, 106);
+            this.labelX1.Location = new System.Drawing.Point(7, 88);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(87, 21);
+            this.labelX1.Size = new System.Drawing.Size(97, 21);
             this.labelX1.TabIndex = 9;
-            this.labelX1.Text = "設定繳回日期";
+            this.labelX1.Text = "設定繳回日期  :";
             // 
             // dateTimeInput3
             // 
@@ -279,7 +281,7 @@
             this.dateTimeInput3.ButtonFreeText.Checked = true;
             this.dateTimeInput3.FreeTextEntryMode = true;
             this.dateTimeInput3.IsPopupCalendarOpen = false;
-            this.dateTimeInput3.Location = new System.Drawing.Point(208, 104);
+            this.dateTimeInput3.Location = new System.Drawing.Point(29, 122);
             // 
             // 
             // 
@@ -327,9 +329,35 @@
             this.dateTimeInput3.Size = new System.Drawing.Size(123, 25);
             this.dateTimeInput3.TabIndex = 10;
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabel1.Location = new System.Drawing.Point(200, 126);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(47, 17);
+            this.linkLabel1.TabIndex = 11;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "上一週";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabel2.Location = new System.Drawing.Point(279, 126);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(47, 17);
+            this.linkLabel2.TabIndex = 12;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "下一週";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
             // AttendanceListForm
             // 
-            this.ClientSize = new System.Drawing.Size(360, 192);
+            this.ClientSize = new System.Drawing.Size(360, 201);
+            this.Controls.Add(this.linkLabel2);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.dateTimeInput3);
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.lbInTo);
@@ -341,6 +369,8 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnSave);
             this.DoubleBuffered = true;
+            this.MaximumSize = new System.Drawing.Size(376, 240);
+            this.MinimumSize = new System.Drawing.Size(376, 240);
             this.Name = "AttendanceListForm";
             this.Text = "班級缺曠記錄明細(確認表)";
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).EndInit();
@@ -363,6 +393,8 @@
         private DevComponents.DotNetBar.LabelX lbInTo;
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dateTimeInput3;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkLabel2;
     }
 }
 

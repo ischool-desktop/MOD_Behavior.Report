@@ -13,6 +13,7 @@ using FISCA.DSAUtil;
 using System.IO;
 using K12.Data;
 using Aspose.Words.Reporting;
+using Campus.Configuration;
 
 namespace K12.Behavior.AttendanceConfirmation
 {
@@ -29,19 +30,44 @@ namespace K12.Behavior.AttendanceConfirmation
 
         private AttendanceConfigData GetCD;
 
+        private ConfigData Config { get; set; }
+
         public const string ConfigName = "班級缺曠明細確認表_Word";
 
         public AttendanceListForm()
         {
             InitializeComponent();
 
-            dateTimeInput1.Value = DateTime.Today.AddMonths(-7);
-            dateTimeInput2.Value = DateTime.Today;
+            // 2017/11/22 羿均，透過config讀取上次設定的列印日期
+            Campus.Configuration.Config.App.Sync("上次列印日期");
+            Config = Campus.Configuration.Config.App["上次列印日期"];
+
+            if (Config["起始日期"] == "" || Config["起始日期"] == null)
+                dateTimeInput1.Value = DateTime.Today;
+            else
+                dateTimeInput1.Value = DateTime.Parse( Config["起始日期"] );
+
+            if (Config["結束日期"] == "" || Config["結束日期"] == null)
+                dateTimeInput2.Value = DateTime.Today;
+            else
+                dateTimeInput2.Value = DateTime.Parse( Config["結束日期"] );
+
+            if (Config["繳回日期"] == "" || Config["繳回日期"] == null)
+                dateTimeInput3.Value = DateTime.Today;
+            else
+                dateTimeInput3.Value = DateTime.Parse( Config["繳回日期"] );
+            
+            dateTimeInput1.ValueChanged += delegate { ConfigSave(); };
+            dateTimeInput2.ValueChanged += delegate { ConfigSave(); };
+            dateTimeInput3.ValueChanged += delegate { ConfigSave(); };
+            
+            //dateTimeInput1.Value = DateTime.Today.AddMonths(-7);
+            //dateTimeInput2.Value = DateTime.Today;
 
             GetCD = new AttendanceConfigData();
 
             //預設為3日後
-            dateTimeInput3.Value = DateTime.Today.AddDays(3);
+            //dateTimeInput3.Value = DateTime.Today.AddDays(3);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -52,7 +78,7 @@ namespace K12.Behavior.AttendanceConfirmation
             }
 
             this.btnSave.Enabled = false;
-
+            
             //LoadPreference();
 
             GetCD = new AttendanceConfigData();
@@ -338,6 +364,35 @@ namespace K12.Behavior.AttendanceConfirmation
 
                 refrow.Remove();
             }
+        }
+
+        // 2017/11/22 羿均新增 config 紀錄使用者設定，以及上一週、下一週linklabel。
+        private void ConfigSave()
+        {
+            Config["起始日期"] = "" + dateTimeInput1.Value;
+            Config["結束日期"] = "" + dateTimeInput2.Value;
+            Config["繳回日期"] = "" + dateTimeInput3.Value;
+            Config.Save();
+        }
+        
+        private void SetDateTime(int n)
+        {
+            dateTimeInput1.Value = DateTime.Parse(Config["起始日期"]).AddDays(n);
+            dateTimeInput2.Value = DateTime.Parse(Config["結束日期"]).AddDays(n);
+            dateTimeInput3.Value = DateTime.Parse(Config["繳回日期"]).AddDays(n);
+
+            ConfigSave();
+        }
+
+        // 上一週
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            SetDateTime(-7);
+        }
+        // 下一週
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            SetDateTime(7);
         }
     }
 

@@ -47,10 +47,16 @@
       <HintPath>Library\Aspose.Words.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Campus.Configuration, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Campus.Configuration.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\FiscaAE高中開發2\components\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
+    <Reference Include="DevComponents.Instrumentation, Version=9.5.0.1, Culture=neutral, PublicKeyToken=f90dc37c26666a67, processorArchitecture=MSIL" />
     <Reference Include="FISCA">
       <HintPath>..\..\..\..\..\Documents and Settings\Dylan.Huang\桌面\系統\FiscaAE高中開發2\kernel\FISCA.dll</HintPath>
       <Private>False</Private>
@@ -163,6 +169,7 @@
   <ItemGroup>
     <Content Include="Library\Aspose.Words.dll" />
     <Content Include="Library\Aspose.Words.xml" />
+    <Content Include="Library\Campus.Configuration.dll" />
     <Content Include="Library\DevComponents.DotNetBar2.dll" />
     <Content Include="Library\FISCA.dll" />
     <Content Include="Library\FISCA.DSAUtil.dll" />
