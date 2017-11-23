@@ -51,7 +51,7 @@
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnSave.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
-            this.btnSave.Location = new System.Drawing.Point(203, 165);
+            this.btnSave.Location = new System.Drawing.Point(181, 165);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(70, 25);
             this.btnSave.TabIndex = 0;
@@ -64,7 +64,7 @@
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnExit.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
-            this.btnExit.Location = new System.Drawing.Point(278, 165);
+            this.btnExit.Location = new System.Drawing.Point(276, 165);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(70, 25);
             this.btnExit.TabIndex = 1;
@@ -216,7 +216,7 @@
             this.lblPrintSetup.AutoSize = true;
             this.lblPrintSetup.BackColor = System.Drawing.Color.Transparent;
             this.lblPrintSetup.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
-            this.lblPrintSetup.Location = new System.Drawing.Point(6, 173);
+            this.lblPrintSetup.Location = new System.Drawing.Point(11, 173);
             this.lblPrintSetup.Name = "lblPrintSetup";
             this.lblPrintSetup.Size = new System.Drawing.Size(60, 17);
             this.lblPrintSetup.TabIndex = 5;
@@ -229,7 +229,7 @@
             this.lblAttendance.AutoSize = true;
             this.lblAttendance.BackColor = System.Drawing.Color.Transparent;
             this.lblAttendance.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
-            this.lblAttendance.Location = new System.Drawing.Point(71, 173);
+            this.lblAttendance.Location = new System.Drawing.Point(92, 173);
             this.lblAttendance.Name = "lblAttendance";
             this.lblAttendance.Size = new System.Drawing.Size(60, 17);
             this.lblAttendance.TabIndex = 6;
@@ -333,7 +333,7 @@
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel1.Location = new System.Drawing.Point(200, 126);
+            this.linkLabel1.Location = new System.Drawing.Point(205, 126);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(47, 17);
             this.linkLabel1.TabIndex = 11;
@@ -345,7 +345,7 @@
             // 
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel2.Location = new System.Drawing.Point(279, 126);
+            this.linkLabel2.Location = new System.Drawing.Point(284, 126);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(47, 17);
             this.linkLabel2.TabIndex = 12;

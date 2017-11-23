@@ -57,10 +57,6 @@ namespace K12.Behavior.AttendanceConfirmation
             else
                 dateTimeInput3.Value = DateTime.Parse( Config["繳回日期"] );
             
-            dateTimeInput1.ValueChanged += delegate { ConfigSave(); };
-            dateTimeInput2.ValueChanged += delegate { ConfigSave(); };
-            dateTimeInput3.ValueChanged += delegate { ConfigSave(); };
-            
             //dateTimeInput1.Value = DateTime.Today.AddMonths(-7);
             //dateTimeInput2.Value = DateTime.Today;
 
@@ -72,6 +68,9 @@ namespace K12.Behavior.AttendanceConfirmation
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            // 2017/11/23 儲存日期區間設定
+            ConfigSave();
+
             if (K12.Presentation.NLDPanels.Class.SelectedSource.Count == 0)
             {
                 return;
@@ -377,11 +376,9 @@ namespace K12.Behavior.AttendanceConfirmation
         
         private void SetDateTime(int n)
         {
-            dateTimeInput1.Value = DateTime.Parse(Config["起始日期"]).AddDays(n);
-            dateTimeInput2.Value = DateTime.Parse(Config["結束日期"]).AddDays(n);
-            dateTimeInput3.Value = DateTime.Parse(Config["繳回日期"]).AddDays(n);
-
-            ConfigSave();
+            dateTimeInput1.Value = dateTimeInput1.Value.AddDays(n);
+            dateTimeInput2.Value = dateTimeInput2.Value.AddDays(n);
+            dateTimeInput3.Value = dateTimeInput3.Value.AddDays(n);
         }
 
         // 上一週
