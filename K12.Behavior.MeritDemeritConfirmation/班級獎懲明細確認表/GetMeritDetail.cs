@@ -33,9 +33,9 @@ namespace K12.Behavior.MeritDemeritConfirmation
         /// </summary>
         public Dictionary<string, StudentRecord> studentInfoDict = new Dictionary<string, StudentRecord>();
 
+        
 
-
-        public GetMeritDetail(DateTime startDate, DateTime endDate)
+        public GetMeritDetail(DateTime startDate, DateTime endDate, bool isOccurDate)
         {
             allAbsenceDetail.Clear();
             studentClassDict.Clear();
@@ -73,12 +73,28 @@ namespace K12.Behavior.MeritDemeritConfirmation
             }
 
 
-            //取得獎勵相關資料
-            List<MeritRecord> GetMerList = Merit.SelectByOccurDate(allStudentID, startDate, endDate);
+            List<MeritRecord> GetMerList =new List<MeritRecord>();
+            List<DemeritRecord> GetDemerList = new List<DemeritRecord>();
+
+            if (isOccurDate)
+            {
+                //取得獎勵相關資料(發生日期)
+                  GetMerList = Merit.SelectByOccurDate(allStudentID, startDate, endDate);
+
+                //取得懲戒相關資料(發生日期)
+                 GetDemerList = Demerit.SelectByOccurDate(allStudentID, startDate, endDate);
+            }
+            else
+            {
+                //取得獎勵相關資料(登錄日期)
+                GetMerList = Merit.SelectByRegisterDate(allStudentID, startDate, endDate);
+
+                //取得懲戒相關資料(登錄日期)
+                GetDemerList = Demerit.SelectByRegisterDate(allStudentID, startDate, endDate);
+            }
 
 
-            //取得懲戒相關資料
-            List<DemeritRecord> GetDemerList = Demerit.SelectByOccurDate(allStudentID, startDate, endDate);
+
 
 
             //處理資料

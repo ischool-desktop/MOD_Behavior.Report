@@ -28,6 +28,8 @@ namespace K12.Behavior.MeritDemeritConfirmation
 
         private Document _doc;
 
+        private Boolean isOccurDate = true; //預設為發生日期
+
         public MeritDemeritListForm()
         {
             InitializeComponent();
@@ -39,14 +41,21 @@ namespace K12.Behavior.MeritDemeritConfirmation
 
             //預設為3日後
             dateTimeInput3.Value = DateTime.Today.AddDays(3);
+
+            
         }
+
+
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            isOccurDate = OccurDate_chbX.Checked;
+
             if (K12.Presentation.NLDPanels.Class.SelectedSource.Count == 0)
             {
                 return;
             }
+
 
             this.btnSave.Enabled = false;
 
@@ -72,7 +81,7 @@ namespace K12.Behavior.MeritDemeritConfirmation
             string ClassNoData = (string)args[3]; //不印出無資料班級
 
             //取得學生資料
-            Data = new GetMeritDetail(startDate, endDate);
+            Data = new GetMeritDetail(startDate, endDate, isOccurDate);
 
             Document template;
 
@@ -331,6 +340,32 @@ namespace K12.Behavior.MeritDemeritConfirmation
         {
             MeritSetup AS = new MeritSetup(GetCD);
             AS.ShowDialog();
+        }
+
+        //兩checkbox勾選互斥，必定有一勾選
+        private void OccurDate_chbX_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Register_chbX.Checked)
+            {
+                Register_chbX.Checked = false;
+            }
+            else
+            {
+                OccurDate_chbX.Checked = true;
+            }
+        }
+        
+
+        private void Register_chbX_CheckedChanged(object sender, EventArgs e)
+        {          
+            if (OccurDate_chbX.Checked)
+            {
+                OccurDate_chbX.Checked = false;
+            }
+            else
+            {
+                Register_chbX.Checked = true;
+            }
         }
     }
 }

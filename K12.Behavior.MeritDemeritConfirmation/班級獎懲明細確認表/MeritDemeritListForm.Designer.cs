@@ -37,6 +37,9 @@
             this.dateTimeInput1 = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
+            this.OccurDate_chbX = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.Register_chbX = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.lbcheck = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).BeginInit();
@@ -55,7 +58,7 @@
             this.dateTimeInput3.ButtonFreeText.Checked = true;
             this.dateTimeInput3.FreeTextEntryMode = true;
             this.dateTimeInput3.IsPopupCalendarOpen = false;
-            this.dateTimeInput3.Location = new System.Drawing.Point(207, 90);
+            this.dateTimeInput3.Location = new System.Drawing.Point(250, 161);
             // 
             // 
             // 
@@ -100,7 +103,7 @@
             this.dateTimeInput3.MonthCalendar.TodayButtonVisible = true;
             this.dateTimeInput3.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
             this.dateTimeInput3.Name = "dateTimeInput3";
-            this.dateTimeInput3.Size = new System.Drawing.Size(123, 25);
+            this.dateTimeInput3.Size = new System.Drawing.Size(147, 29);
             this.dateTimeInput3.TabIndex = 19;
             // 
             // labelX1
@@ -112,9 +115,9 @@
             // 
             this.labelX1.BackgroundStyle.Class = "";
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(94, 92);
+            this.labelX1.Location = new System.Drawing.Point(134, 163);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(87, 21);
+            this.labelX1.Size = new System.Drawing.Size(108, 26);
             this.labelX1.TabIndex = 18;
             this.labelX1.Text = "設定繳回日期";
             // 
@@ -128,9 +131,9 @@
             this.lbInTo.BackgroundStyle.Class = "";
             this.lbInTo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lbInTo.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
-            this.lbInTo.Location = new System.Drawing.Point(161, 50);
+            this.lbInTo.Location = new System.Drawing.Point(204, 116);
             this.lbInTo.Name = "lbInTo";
-            this.lbInTo.Size = new System.Drawing.Size(20, 21);
+            this.lbInTo.Size = new System.Drawing.Size(25, 26);
             this.lbInTo.TabIndex = 17;
             this.lbInTo.Text = "至";
             // 
@@ -139,9 +142,9 @@
             this.lblPrintSetup.AutoSize = true;
             this.lblPrintSetup.BackColor = System.Drawing.Color.Transparent;
             this.lblPrintSetup.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
-            this.lblPrintSetup.Location = new System.Drawing.Point(12, 146);
+            this.lblPrintSetup.Location = new System.Drawing.Point(37, 212);
             this.lblPrintSetup.Name = "lblPrintSetup";
-            this.lblPrintSetup.Size = new System.Drawing.Size(60, 17);
+            this.lblPrintSetup.Size = new System.Drawing.Size(78, 22);
             this.lblPrintSetup.TabIndex = 16;
             this.lblPrintSetup.TabStop = true;
             this.lblPrintSetup.Text = "列印設定";
@@ -157,9 +160,9 @@
             this.lbTalk.BackgroundStyle.Class = "";
             this.lbTalk.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lbTalk.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
-            this.lbTalk.Location = new System.Drawing.Point(12, 12);
+            this.lbTalk.Location = new System.Drawing.Point(37, 80);
             this.lbTalk.Name = "lbTalk";
-            this.lbTalk.Size = new System.Drawing.Size(181, 21);
+            this.lbTalk.Size = new System.Drawing.Size(225, 26);
             this.lbTalk.TabIndex = 15;
             this.lbTalk.Text = "請選擇您要列印的日期區間：";
             // 
@@ -177,7 +180,7 @@
             this.dateTimeInput2.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
             this.dateTimeInput2.FreeTextEntryMode = true;
             this.dateTimeInput2.IsPopupCalendarOpen = false;
-            this.dateTimeInput2.Location = new System.Drawing.Point(207, 48);
+            this.dateTimeInput2.Location = new System.Drawing.Point(250, 116);
             // 
             // 
             // 
@@ -222,7 +225,7 @@
             this.dateTimeInput2.MonthCalendar.TodayButtonVisible = true;
             this.dateTimeInput2.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
             this.dateTimeInput2.Name = "dateTimeInput2";
-            this.dateTimeInput2.Size = new System.Drawing.Size(123, 25);
+            this.dateTimeInput2.Size = new System.Drawing.Size(147, 29);
             this.dateTimeInput2.TabIndex = 14;
             // 
             // dateTimeInput1
@@ -239,7 +242,7 @@
             this.dateTimeInput1.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
             this.dateTimeInput1.FreeTextEntryMode = true;
             this.dateTimeInput1.IsPopupCalendarOpen = false;
-            this.dateTimeInput1.Location = new System.Drawing.Point(12, 48);
+            this.dateTimeInput1.Location = new System.Drawing.Point(35, 116);
             // 
             // 
             // 
@@ -284,7 +287,7 @@
             this.dateTimeInput1.MonthCalendar.TodayButtonVisible = true;
             this.dateTimeInput1.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
             this.dateTimeInput1.Name = "dateTimeInput1";
-            this.dateTimeInput1.Size = new System.Drawing.Size(123, 25);
+            this.dateTimeInput1.Size = new System.Drawing.Size(147, 29);
             this.dateTimeInput1.TabIndex = 13;
             // 
             // btnExit
@@ -293,7 +296,7 @@
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnExit.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
-            this.btnExit.Location = new System.Drawing.Point(266, 137);
+            this.btnExit.Location = new System.Drawing.Point(327, 209);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(70, 25);
             this.btnExit.TabIndex = 12;
@@ -306,18 +309,72 @@
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnSave.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
-            this.btnSave.Location = new System.Drawing.Point(191, 137);
+            this.btnSave.Location = new System.Drawing.Point(242, 209);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(70, 25);
             this.btnSave.TabIndex = 11;
             this.btnSave.Text = "列印";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // OccurDate_chbX
+            // 
+            this.OccurDate_chbX.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.OccurDate_chbX.BackgroundStyle.Class = "";
+            this.OccurDate_chbX.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.OccurDate_chbX.Checked = true;
+            this.OccurDate_chbX.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.OccurDate_chbX.CheckValue = "Y";
+            this.OccurDate_chbX.Location = new System.Drawing.Point(54, 45);
+            this.OccurDate_chbX.Name = "OccurDate_chbX";
+            this.OccurDate_chbX.Size = new System.Drawing.Size(100, 23);
+            this.OccurDate_chbX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.OccurDate_chbX.TabIndex = 20;
+            this.OccurDate_chbX.Text = "發生日期";
+            this.OccurDate_chbX.CheckedChanged += new System.EventHandler(this.OccurDate_chbX_CheckedChanged);
+            // 
+            // Register_chbX
+            // 
+            this.Register_chbX.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.Register_chbX.BackgroundStyle.Class = "";
+            this.Register_chbX.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.Register_chbX.Location = new System.Drawing.Point(216, 45);
+            this.Register_chbX.Name = "Register_chbX";
+            this.Register_chbX.Size = new System.Drawing.Size(100, 23);
+            this.Register_chbX.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.Register_chbX.TabIndex = 21;
+            this.Register_chbX.Text = "登錄日期";
+            this.Register_chbX.CheckedChanged += new System.EventHandler(this.Register_chbX_CheckedChanged);
+            // 
+            // lbcheck
+            // 
+            this.lbcheck.AutoSize = true;
+            this.lbcheck.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.lbcheck.BackgroundStyle.Class = "";
+            this.lbcheck.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lbcheck.Font = new System.Drawing.Font("微軟正黑體", 9.75F);
+            this.lbcheck.Location = new System.Drawing.Point(37, 13);
+            this.lbcheck.Name = "lbcheck";
+            this.lbcheck.Size = new System.Drawing.Size(142, 26);
+            this.lbcheck.TabIndex = 22;
+            this.lbcheck.Text = "請選擇查詢方式：";
+            // 
             // MeritDemeritListForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(360, 172);
+            this.ClientSize = new System.Drawing.Size(427, 249);
+            this.Controls.Add(this.lbcheck);
+            this.Controls.Add(this.Register_chbX);
+            this.Controls.Add(this.OccurDate_chbX);
             this.Controls.Add(this.dateTimeInput3);
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.lbInTo);
@@ -349,5 +406,8 @@
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dateTimeInput1;
         private DevComponents.DotNetBar.ButtonX btnExit;
         private DevComponents.DotNetBar.ButtonX btnSave;
+        private DevComponents.DotNetBar.Controls.CheckBoxX OccurDate_chbX;
+        private DevComponents.DotNetBar.Controls.CheckBoxX Register_chbX;
+        private DevComponents.DotNetBar.LabelX lbcheck;
     }
 }
