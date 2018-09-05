@@ -353,9 +353,7 @@ namespace K12.Behavior.MeritDemeritConfirmation
             {
                 OccurDate_chbX.Checked = true;
             }
-        }
-        
-
+        }       
         private void Register_chbX_CheckedChanged(object sender, EventArgs e)
         {          
             if (OccurDate_chbX.Checked)
