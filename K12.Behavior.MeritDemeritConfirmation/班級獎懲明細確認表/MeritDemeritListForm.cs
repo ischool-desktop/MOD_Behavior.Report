@@ -28,6 +28,7 @@ namespace K12.Behavior.MeritDemeritConfirmation
 
         private Document _doc;
 
+        //2018.09.07 [ischoolKingdom] Vicky依據 [05-04][02] 獎懲紀錄明細表 項目，新增登錄日期選項，可依登錄日期輸出資料。
         private Boolean isOccurDate = true; //預設為發生日期
 
         public MeritDemeritListForm()
@@ -46,9 +47,9 @@ namespace K12.Behavior.MeritDemeritConfirmation
         }
 
 
-
         private void btnSave_Click(object sender, EventArgs e)
         {
+            //2018.09.07 [ischoolKingdom] Vicky依據 [05-04][02] 獎懲紀錄明細表 項目，新增登錄日期選項(isOccurDate bool判定)，可依登錄日期輸出資料。
             isOccurDate = OccurDate_chbX.Checked;
 
             if (K12.Presentation.NLDPanels.Class.SelectedSource.Count == 0)
@@ -80,6 +81,7 @@ namespace K12.Behavior.MeritDemeritConfirmation
             int size = (int)args[2];
             string ClassNoData = (string)args[3]; //不印出無資料班級
 
+            //2018.09.07 [ischoolKingdom] Vicky依據 [05-04][02] 獎懲紀錄明細表 項目，新增登錄日期選項(bool判定)，可依登錄日期輸出資料。
             //取得學生資料
             Data = new GetMeritDetail(startDate, endDate, isOccurDate);
 
@@ -211,12 +213,20 @@ namespace K12.Behavior.MeritDemeritConfirmation
 
                         foreach (MeritRecord merit in Csr._dic[stud.ID].GetMerList)
                         {
+                            //2018.09.07 [ischoolKingdom] Vicky依據 [05-04][02] 獎懲紀錄明細表 項目，新增登錄日期選項(bool判定)，可依登錄日期輸出資料。
+                            DateTime Date; //發生日期或登錄日期
+                            if (isOccurDate)
+                            {
+                                Date = merit.OccurDate;
+                            }
+                            else
+                            {
+                                Date = (DateTime)merit.RegisterDate;
+                            }
                             tool.Write(refrow.Cells[Csr.ColumnIndex["座號"]], stud.SeatNo.HasValue ? stud.SeatNo.Value.ToString() : ""); //座號
-                            tool.Write(refrow.Cells[Csr.ColumnIndex["姓名"]], stud.Name);   //姓名
-                            tool.Write(refrow.Cells[Csr.ColumnIndex["日期"]], merit.OccurDate.ToShortDateString());   //日期
-
+                            tool.Write(refrow.Cells[Csr.ColumnIndex["姓名"]], stud.Name);   //姓名                            
+                            tool.Write(refrow.Cells[Csr.ColumnIndex["日期"]], Date.ToShortDateString());   //日期
                             tool.Write(refrow.Cells[Csr.ColumnIndex["獎/懲別"]], GetMerReason(merit));   //獎懲
-
                             tool.Write(refrow.Cells[Csr.ColumnIndex["事由"]], merit.Reason);   //事由
 
                             refrow = table.InsertAfter(rowtemp.Clone(true), refrow) as Row;
@@ -225,9 +235,20 @@ namespace K12.Behavior.MeritDemeritConfirmation
 
                         foreach (DemeritRecord demerit in Csr._dic[stud.ID].GetDemerList)
                         {
+                            //2018.09.07 [ischoolKingdom] Vicky依據 [05-04][02] 獎懲紀錄明細表 項目，新增登錄日期選項(bool判定)，可依登錄日期輸出資料。
+                            DateTime Date; //發生日期或登錄日期
+                            if (isOccurDate)
+                            {
+                                Date = demerit.OccurDate;
+                            }
+                            else
+                            {
+                                Date = (DateTime)demerit.RegisterDate;
+                            }
+
                             tool.Write(refrow.Cells[Csr.ColumnIndex["座號"]], stud.SeatNo.HasValue ? stud.SeatNo.Value.ToString() : ""); //座號
                             tool.Write(refrow.Cells[Csr.ColumnIndex["姓名"]], stud.Name);   //姓名
-                            tool.Write(refrow.Cells[Csr.ColumnIndex["日期"]], demerit.OccurDate.ToShortDateString());   //日期
+                            tool.Write(refrow.Cells[Csr.ColumnIndex["日期"]], Date.ToShortDateString());   //日期
 
                             tool.Write(refrow.Cells[Csr.ColumnIndex["獎/懲別"]], GetDemerReason(demerit));   //日期
 
@@ -342,8 +363,8 @@ namespace K12.Behavior.MeritDemeritConfirmation
             AS.ShowDialog();
         }
 
-        //兩checkbox勾選互斥，必定有一勾選
-        private void OccurDate_chbX_CheckedChanged(object sender, EventArgs e)
+        //2018.09.07 [ischoolKingdom] Vicky依據 [05-04][02] 獎懲紀錄明細表 項目，新增登錄日期選項，可依登錄日期輸出資料。
+        private void OccurDate_chbX_CheckedChanged(object sender, EventArgs e) //兩checkbox勾選互斥，必定有一勾選
         {
             if (Register_chbX.Checked)
             {

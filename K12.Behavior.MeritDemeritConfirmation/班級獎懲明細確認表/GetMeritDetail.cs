@@ -33,8 +33,8 @@ namespace K12.Behavior.MeritDemeritConfirmation
         /// </summary>
         public Dictionary<string, StudentRecord> studentInfoDict = new Dictionary<string, StudentRecord>();
 
-        
 
+        //2018.09.07 [ischoolKingdom] Vicky依據 [05-04][02] 獎懲紀錄明細表 項目，新增登錄日期選項(bool判定)，可依登錄日期輸出資料。
         public GetMeritDetail(DateTime startDate, DateTime endDate, bool isOccurDate)
         {
             allAbsenceDetail.Clear();
@@ -76,10 +76,12 @@ namespace K12.Behavior.MeritDemeritConfirmation
             List<MeritRecord> GetMerList =new List<MeritRecord>();
             List<DemeritRecord> GetDemerList = new List<DemeritRecord>();
 
+
+            //2018.09.07 [ischoolKingdom] Vicky依據 [05-04][02] 獎懲紀錄明細表 項目，新增登錄日期選項(bool判定)，可依登錄日期輸出資料。
             if (isOccurDate)
             {
                 //取得獎勵相關資料(發生日期)
-                  GetMerList = Merit.SelectByOccurDate(allStudentID, startDate, endDate);
+                 GetMerList = Merit.SelectByOccurDate(allStudentID, startDate, endDate);
 
                 //取得懲戒相關資料(發生日期)
                  GetDemerList = Demerit.SelectByOccurDate(allStudentID, startDate, endDate);
@@ -93,17 +95,12 @@ namespace K12.Behavior.MeritDemeritConfirmation
                 GetDemerList = Demerit.SelectByRegisterDate(allStudentID, startDate, endDate);
             }
 
-
-
-
-
             //處理資料
             foreach (MeritRecord var in GetMerList)
             {
                 string studentID = var.RefStudentID;
-                string occurDate = tool.HowManyWeek(var.OccurDate);
+                string occurDate = tool.HowManyWeek(var.OccurDate);                       
                 string classID = studentClassDict[studentID];
-
 
                 if (!allAbsenceDetail.ContainsKey(classID))
                     allAbsenceDetail.Add(classID, new Dictionary<string, MeritAndDemerit>());
